@@ -4,7 +4,8 @@
  * OR: npx ts-node --compiler-options '{"module":"CommonJS"}' prisma/seed.ts
  */
 
-import { PrismaClient } from '@prisma/client'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { PrismaClient } = require('@prisma/client')
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
