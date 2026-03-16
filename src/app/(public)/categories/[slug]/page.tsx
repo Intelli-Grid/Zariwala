@@ -1,0 +1,159 @@
+import { prisma } from '@/lib/prisma'
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { buildCategoryLink } from '@/lib/whatsapp'
+
+const CATEGORY_CONTENT: Record<string, { title: string; description: string; items: string[]; priceRange: string }> = {
+  'denim': {
+    title: 'Vintage Denim',
+    description: 'From selvedge Levi\'s to rare Lee Ranch coats, we actively seek out the finest vintage denim from the 1940s through the 1990s. Heavy workwear, trucker jackets, and deadstock are especially welcome.',
+    items: ['Levi\'s 501, 505, 517, 646', 'Lee 101, 101B, Rider jackets', 'Wrangler 11MW, 13MWZ', 'Big E selvedge', 'Japanese reproduction denim', 'Workwear chore coats'],
+    priceRange: '$20 – $800+',
+  },
+  'band-tees': {
+    title: 'Vintage Band T-Shirts',
+    description: 'Single-stitch tour tees, concert shirts, and early band merch from the 1970s through the 1990s are among the most sought-after items in the vintage market. We pay premium prices for authentic pieces.',
+    items: ['Concert tour tees (pre-2000)', 'Single-stitch construction', 'Bootleg and official merch', 'Punk, metal, rock, rap', 'Screen printed graphics', 'Deadstock and unworn examples'],
+    priceRange: '$30 – $1,500+',
+  },
+  'outerwear': {
+    title: 'Vintage Outerwear',
+    description: 'Military surplus, workwear, sport, and heritage outerwear from iconic American and Japanese makers. We look for condition, provenance, and rare colourways.',
+    items: ['MA-1 / MA-2 flight jackets', 'M-65 field jackets', 'Varsity / letterman jackets', 'Carhartt Detroit & Chore', 'Baracuta G9 Harrington', 'N-1 deck jackets'],
+    priceRange: '$40 – $600+',
+  },
+  'sportswear': {
+    title: 'Vintage Sportswear',
+    description: 'Rare collegiate, Olympic, and athletic wear from the 1960s through the 1990s. Champion Reverse Weave, Russell Athletic, and early Nike and Adidas pieces are in high demand.',
+    items: ['Champion Reverse Weave sweatshirts', 'Russell Athletic basics', 'Early Nike and Adidas', 'Olympic and team USA gear', 'Collegiate crewnecks', 'NBA, NFL, MLB heritage'],
+    priceRange: '$25 – $500+',
+  },
+  'designer': {
+    title: 'Vintage Designer Labels',
+    description: 'Early pieces from established luxury houses, pre-2000 items from iconic designers, and archival fashion pieces. We have a specialist team for evaluating designer vintage.',
+    items: ['Issey Miyake, Comme des Garçons', 'Yohji Yamamoto, Helmut Lang', 'Early Calvin Klein, Ralph Lauren', 'Versace, Moschino', 'Vivienne Westwood', 'Jean Paul Gaultier'],
+    priceRange: '$50 – $5,000+',
+  },
+  'heritage-textiles': {
+    title: 'Heritage Textiles',
+    description: 'Rare and fine textiles including handwoven silks, zari-work, and heritage pieces from Asia. We work with specialist assessors for heritage and ethnic textile collections.',
+    items: ['Benarasi and Kanjivaram silks', 'Zardozi and zari embroidery', 'Handloom and ikat weaves', 'Obi belts and Japanese kimono', 'Vintage saris and dupattas', 'Antique shawls and stoles'],
+    priceRange: '$30 – $2,000+',
+  },
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const content = CATEGORY_CONTENT[params.slug]
+  if (!content) return { title: 'Category Not Found' }
+  return {
+    title: `${content.title} | Zariwala`,
+    description: `${content.description} WhatsApp Zariwala for a free valuation.`,
+  }
+}
+
+export default async function CategoryPage({ params }: { params: { slug: string } }) {
+  const content = CATEGORY_CONTENT[params.slug]
+
+  if (!content) {
+    notFound()
+  }
+
+  // Get related blog posts for this category
+  const relatedPosts = await prisma.blogPost.findMany({
+    where: {
+      published: true,
+      OR: [
+        { category: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
+        { title: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
+      ],
+    },
+    take: 3,
+    orderBy: { createdAt: 'desc' },
+  })
+
+  return (
+    <div className="bg-[var(--color-ivory)] min-h-screen">
+      {/* Hero */}
+      <section className="bg-[var(--color-espresso)] py-20 lg:py-28">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block px-4 py-1.5 bg-[var(--color-gold)]/20 text-[var(--color-gold)] text-sm font-bold uppercase tracking-widest rounded-full mb-8">
+            Category
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-[var(--color-ivory)] mb-8">
+            {content.title}
+          </h1>
+          <p className="font-body text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            {content.description}
+          </p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-6">What We Look For</h2>
+              <ul className="space-y-3">
+                {content.items.map((item, i) => (
+                  <li key={i} className="flex items-start space-x-3 font-body text-[var(--color-espresso-mid)]">
+                    <span className="text-[var(--color-gold)] mt-1 flex-shrink-0">✦</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-white p-8 rounded-2xl border border-[var(--color-gold)]/10 shadow-sm">
+                <h3 className="font-display text-xl text-[var(--color-espresso)] mb-3">Typical Price Range</h3>
+                <p className="text-4xl font-display text-[var(--color-gold-dark)]">{content.priceRange}</p>
+                <p className="font-body text-sm text-[var(--color-gray-500)] mt-2">
+                  Prices depend on era, condition, rarity, and current demand. Submit your item for a free evaluation.
+                </p>
+              </div>
+
+              <div className="rounded-2xl p-8" style={{ background: 'var(--ink)' }}>
+                <h3 className="font-display text-xl mb-3" style={{ color: 'var(--zari-warm)' }}>Ready to Sell?</h3>
+                <p className="font-body text-sm leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
+                  Send a few clear photos on WhatsApp for a free valuation — or fill in our structured form.
+                </p>
+                <div className="flex flex-col gap-3">
+                  <a
+                    href={buildCategoryLink(content.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id={`category-${params.slug}-wa-cta`}
+                    className="btn-whatsapp text-center text-sm py-3"
+                  >
+                    💬 Send Photos on WhatsApp
+                  </a>
+                  <Link href="/sell" className="btn-ghost text-center text-sm py-2.5" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+                    Use Inquiry Form
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Related blog posts */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-20 pt-12 border-t border-[var(--color-ivory-dark)]">
+              <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-8">Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedPosts.map((post: any) => (
+                  <Link key={post.id} href={`/blog/${post.slug}`} className="group block bg-white p-6 rounded-xl border border-[var(--color-gold)]/10 hover:shadow-md transition-shadow">
+                    <h3 className="font-display text-lg text-[var(--color-espresso)] group-hover:text-[var(--color-gold-dark)] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="font-body text-sm text-[var(--color-gray-500)] mt-2 line-clamp-2">{post.excerpt}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  )
+}

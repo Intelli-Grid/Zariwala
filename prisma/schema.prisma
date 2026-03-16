@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── ENUMS ──────────────────────────────────────────────────────
+
+enum ContactMethod {
+  WHATSAPP
+  EMAIL
+}
+
+enum InquiryStatus {
+  NEW
+  REVIEWING
+  OFFER_SENT
+  ACCEPTED
+  COMPLETED
+  DECLINED
+  ARCHIVED
+}
+
+enum ItemCondition {
+  EXCELLENT
+  GOOD
+  FAIR
+  POOR
+}
+
+// ─── INQUIRIES ──────────────────────────────────────────────────
+
+model Inquiry {
+  id            String          @id @default(cuid())
+  reference     String          @unique  // ZRW-YYYY-XXXXX
+
+  // Seller contact info
+  sellerName    String
+  contactMethod ContactMethod   @default(WHATSAPP)
+  whatsapp      String?
+  email         String?
+  country       String
+  city          String?
+
+  // Item info
+  categories    String[]        // Legacy multi-select array
+  category      String?         // Primary category (blueprint field)
+  itemCount     Int             @default(1)
+  condition     String?         // Maps to ItemCondition values
+  era           String?         // e.g. "1970s", "1980s"
+  hasOriginalTags Boolean?
+  description   String?         @db.Text
+
+  // Photos (Cloudinary secure URLs)
+  photos        String[]
+
+  // Status & offer tracking
+  status        String          @default("NEW")  // Maps to InquiryStatus
+  offerAmount   Decimal?        @db.Decimal(10, 2)
+  currency      String          @default("USD")
+  adminNotes    String?         @db.Text
+  offerSentAt   DateTime?
+  acceptedAt    DateTime?
+  completedAt   DateTime?
+  itemReceivedAt DateTime?
+  paidAt        DateTime?
+  paymentMethod String?         // e.g. "bank_transfer", "paypal"
+
+  // Relations
+  notes         InquiryNote[]
+
+  // Meta
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([country])
+  @@index([contactMethod])
+}
+
+// ─── INQUIRY NOTES (Admin internal notes) ──────────────────────
+
+model InquiryNote {
+  id          String   @id @default(cuid())
+  inquiryId   String
+  inquiry     Inquiry  @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  authorName  String   @default("Admin")
+  note        String   @db.Text
+  createdAt   DateTime @default(now())
+
+  @@index([inquiryId])
+}
+
+// ─── BLOG ───────────────────────────────────────────────────────
+
+model BlogPost {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  excerpt         String    @db.Text
+  content         String    @db.Text
+  coverImage      String?
+  seoTitle        String?
+  seoDescription  String?
+  category        String?
+  tags            String[]
+  published       Boolean   @default(false)
+  publishedAt     DateTime?
+  readTime        Int?      // estimated read minutes
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  views           Int       @default(0)
+
+  @@index([slug])
+  @@index([published])
+  @@index([publishedAt])
+  @@index([category])
+}
+
+// ─── TESTIMONIALS ───────────────────────────────────────────────
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  country     String
+  flag        String
+  quote       String   @db.Text
+  itemSold    String?
+  amountRange String?  // e.g. "$200–350"
+  rating      Int      @default(5)
+  isVisible   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+// ─── ADMIN USERS ────────────────────────────────────────────────
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+// ─── SITE SETTINGS (key-value store) ───────────────────────────
+// Keys: whatsapp_number, telegram_community, telegram_bot_token,
+//       admin_telegram_chat_id, notify_email, notify_telegram,
+//       notify_whatsapp, site_name, site_tagline
+
+model SiteSetting {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+// ─── CATEGORIES ─────────────────────────────────────────────────
+
+model Category {
+  id             String   @id @default(cuid())
+  name           String
+  slug           String   @unique
+  description    String?  @db.Text
+  image          String?
+  waMessage      String?  // Pre-filled WhatsApp message for this category
+  priority       Int      @default(0)
+  sortOrder      Int      @default(0)
+  isActive       Boolean  @default(true)
+  priceRangeMin  Int?     // USD
+  priceRangeMax  Int?     // USD indicative max
+  currency       String   @default("USD")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([sortOrder])
+}
+
+// ─── WHATSAPP MESSAGE LOG ────────────────────────────────────────
+
+model WhatsAppMessage {
+  id          String   @id @default(cuid())
+  inquiryId   String?
+  from        String
+  to          String
+  message     String   @db.Text
+  direction   String   // INBOUND | OUTBOUND
+  status      String   // DELIVERED | READ | FAILED | PENDING
+  timestamp   DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([inquiryId])
+  @@index([from])
+}
