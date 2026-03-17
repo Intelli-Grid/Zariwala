@@ -28,7 +28,7 @@ async function sendBrevoEmail(payload: EmailPayload): Promise<boolean> {
       body: JSON.stringify({
         sender: {
           name: process.env.EMAIL_FROM_NAME || 'Zariwala',
-          email: process.env.EMAIL_FROM_ADDRESS || 'hello@zariwala.com',
+          email: process.env.EMAIL_FROM_ADDRESS || 'hello@zariwala.online',
         },
         ...payload,
       }),
@@ -112,7 +112,7 @@ export async function sendSellerConfirmationEmail(
       <!-- Footer -->
       <div style="background: #1C1C1A; padding: 20px 40px; text-align: center;">
         <p style="color: #5C4E3E; font-size: 11px; margin: 0;">
-          © ${new Date().getFullYear()} Zariwala. All rights reserved. · hello@zariwala.com
+          © ${new Date().getFullYear()} Zariwala. All rights reserved. · hello@zariwala.online
         </p>
       </div>
     </div>
@@ -140,7 +140,7 @@ export async function sendAdminNotificationEmail(inquiry: {
     return false
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://zariwala.com'
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://zariwala.online'
   const subject = `🆕 Zariwala Inquiry: ${inquiry.reference} — ${inquiry.sellerName}`
 
   const htmlContent = `

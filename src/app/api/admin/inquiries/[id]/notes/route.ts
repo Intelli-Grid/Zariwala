@@ -26,7 +26,7 @@ export async function GET(
       where: { id: { in: adminIds } },
       select: { id: true, name: true }
     })
-    const adminMap = new Map(admins.map(a => [a.id, a.name]))
+    const adminMap = new Map(admins.map((a: { id: string; name: string }) => [a.id, a.name]))
 
     const formattedNotes = notes.map((n: any) => ({
       ...n,

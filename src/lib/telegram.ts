@@ -55,7 +55,7 @@ export async function notifyAdminNewInquiry(inquiry: {
     return false
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://zariwala.com'
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://zariwala.online'
 
   const message =
     `🆕 *NEW ZARIWALA INQUIRY — #${inquiry.reference}*\n\n` +

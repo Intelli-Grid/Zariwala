@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://zariwala.com'),
+  metadataBase: new URL('https://zariwala.online'),
   title: {
     default: 'Zariwala — We Buy Your Vintage Clothing Worldwide',
     template: '%s | Zariwala',
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://zariwala.com',
+    url: 'https://zariwala.online',
     siteName: 'Zariwala',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://zariwala.com' },
+  alternates: { canonical: 'https://zariwala.online' },
   robots: {
     index: true,
     follow: true,
@@ -42,8 +42,8 @@ const localBusinessSchema = {
   name: 'Zariwala',
   description:
     'Zariwala buys quality vintage clothing globally — US, UK, and Asia. Fair prices, WhatsApp-first process.',
-  url: 'https://zariwala.com',
-  logo: 'https://zariwala.com/og-image.jpg',
+  url: 'https://zariwala.online',
+  logo: 'https://zariwala.online/og-image.jpg',
   contactPoint: [
     {
       '@type': 'ContactPoint',

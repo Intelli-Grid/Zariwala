@@ -77,7 +77,7 @@ export default function ContactPage() {
 
         {/* Email */}
         <a
-          href="mailto:hello@zariwala.com"
+          href="mailto:hello@zariwala.online"
           id="contact-email-cta"
           className="group flex flex-col sm:flex-row items-center gap-6 rounded-2xl p-8 mb-12 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           style={{
@@ -99,7 +99,7 @@ export default function ContactPage() {
             <p className="font-body mb-2" style={{ color: 'var(--body-color)' }}>
               For formal inquiries, wholesale requests, or media. We aim to respond within 1 business day.
             </p>
-            <p className="font-ui text-sm" style={{ color: 'var(--muted)' }}>hello@zariwala.com</p>
+            <p className="font-ui text-sm" style={{ color: 'var(--muted)' }}>hello@zariwala.online</p>
           </div>
           <span
             className="flex-shrink-0 font-ui text-sm font-semibold group-hover:underline"

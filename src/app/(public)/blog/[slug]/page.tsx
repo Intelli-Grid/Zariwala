@@ -46,11 +46,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     description: post.seoDescription || post.excerpt || '',
     datePublished: post.createdAt.toISOString(),
     dateModified: post.updatedAt.toISOString(),
-    author: { '@type': 'Organization', name: 'Zariwala', url: 'https://zariwala.com' },
-    publisher: { '@type': 'Organization', name: 'Zariwala', logo: { '@type': 'ImageObject', url: 'https://zariwala.com/logo.png' } },
+    author: { '@type': 'Organization', name: 'Zariwala', url: 'https://zariwala.online' },
+    publisher: { '@type': 'Organization', name: 'Zariwala', logo: { '@type': 'ImageObject', url: 'https://zariwala.online/logo.png' } },
     image: post.coverImage ? [post.coverImage] : [],
-    url: `https://zariwala.com/blog/${post.slug}`,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://zariwala.com/blog/${post.slug}` },
+    url: `https://zariwala.online/blog/${post.slug}`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://zariwala.online/blog/${post.slug}` },
   }
 
   // Raw HTML rendering since we use TipTap in backend
