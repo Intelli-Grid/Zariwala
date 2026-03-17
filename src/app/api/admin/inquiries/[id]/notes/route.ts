@@ -14,26 +14,12 @@ export async function GET(
     const { id } = await params
     
     // We fetch notes and join with the admin user to get their name
-    // @ts-ignore
     const notes = await prisma.inquiryNote.findMany({
       where: { inquiryId: id },
       orderBy: { createdAt: 'desc' }
     })
 
-    // Manual join for admin names since relation isn't mapped
-    const adminIds = Array.from(new Set(notes.map((n: any) => n.authorId as string))) as string[]
-    const admins = await prisma.adminUser.findMany({
-      where: { id: { in: adminIds } },
-      select: { id: true, name: true }
-    })
-    const adminMap = new Map(admins.map((a: { id: string; name: string }) => [a.id, a.name]))
-
-    const formattedNotes = notes.map((n: any) => ({
-      ...n,
-      authorName: adminMap.get(n.authorId) || 'Admin'
-    }))
-
-    return NextResponse.json({ notes: formattedNotes })
+    return NextResponse.json({ notes })
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch notes' }, { status: 500 })
   }
@@ -55,11 +41,10 @@ export async function POST(
       return NextResponse.json({ error: 'Note cannot be empty' }, { status: 400 })
     }
 
-    // @ts-ignore
     const newNote = await prisma.inquiryNote.create({
       data: {
         inquiryId: id,
-        authorId: (session.user as any).id,
+        authorName: session.user.name || 'Admin',
         note: note.trim()
       }
     })
