@@ -23,15 +23,16 @@ export default function ValuationEstimator() {
   const allSelected = Object.values(factors).every(v => v !== '')
 
   const getEstimate = () => {
-    let baseMin = 10
-    let baseMax = 30
+    let baseMin = 1000
+    let baseMax = 2500
     let multiplier = 1
 
     // Type base
-    if (factors.type === 'denim') { baseMin = 20; baseMax = 50 }
-    if (factors.type === 'tee') { baseMin = 10; baseMax = 35 }
-    if (factors.type === 'outerwear') { baseMin = 40; baseMax = 80 }
-    if (factors.type === 'designer') { baseMin = 80; baseMax = 150 }
+    if (factors.type === 'denim') { baseMin = 1500; baseMax = 4000 }
+    if (factors.type === 'tee') { baseMin = 800; baseMax = 2500 }
+    if (factors.type === 'outerwear') { baseMin = 3000; baseMax = 6500 }
+    if (factors.type === 'designer') { baseMin = 6500; baseMax = 15000 }
+    if (factors.type === 'heritage') { baseMin = 3500; baseMax = 8000 }
 
     // Era multiplier
     if (factors.era === 'pre-70s') multiplier *= 3.5
@@ -48,8 +49,8 @@ export default function ValuationEstimator() {
     if (factors.condition === 'flawed') multiplier *= 0.5
 
     return {
-      min: Math.round((baseMin * multiplier) / 5) * 5,
-      max: Math.round((baseMax * multiplier) / 5) * 5
+      min: Math.round((baseMin * multiplier) / 100) * 100,
+      max: Math.round((baseMax * multiplier) / 100) * 100
     }
   }
 
@@ -72,7 +73,8 @@ export default function ValuationEstimator() {
               { id: 'tee', label: 'T-Shirt' },
               { id: 'denim', label: 'Denim/Jeans' },
               { id: 'outerwear', label: 'Outerwear/Jacket' },
-              { id: 'designer', label: 'Designer Piece' },
+              { id: 'designer', label: 'Designer/Luxury' },
+              { id: 'heritage', label: 'Silk/Heritage Saree' },
             ].map(opt => (
               <button
                 key={opt.id}
@@ -158,7 +160,7 @@ export default function ValuationEstimator() {
           <div className="animate-in zoom-in-95 duration-500">
             <p className="font-body text-sm text-[var(--color-espresso-mid)] uppercase tracking-widest mb-2">Estimated Range</p>
             <div className="font-display text-5xl md:text-6xl text-[var(--color-espresso)] mb-4 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-espresso)] to-[var(--color-gold-dark)] mix-blend-multiply">
-              ${estimate?.min} <span className="text-[var(--color-gray-400)] font-sans text-4xl">~</span> ${estimate?.max}
+              ₹{estimate?.min} <span className="text-[var(--color-gray-400)] font-sans text-4xl">~</span> ₹{estimate?.max}
             </div>
             <p className="font-body text-sm text-[var(--color-gray-500)] max-w-sm mx-auto mb-8">
               * This is a rough automated estimate. Actual offers may vary significantly depending on specifics confirmed via photo evaluation.
