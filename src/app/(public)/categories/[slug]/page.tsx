@@ -79,18 +79,23 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     notFound()
   }
 
-  // Get related blog posts for this category
-  const relatedPosts = await prisma.blogPost.findMany({
-    where: {
-      published: true,
-      OR: [
-        { category: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
-        { title: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
-      ],
-    },
-    take: 3,
-    orderBy: { createdAt: 'desc' },
-  })
+  // Get related blog posts for this category safely
+  let relatedPosts: any[] = []
+  try {
+    relatedPosts = await prisma.blogPost.findMany({
+      where: {
+        published: true,
+        OR: [
+          { category: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
+          { title: { contains: content.title.split(' ')[0], mode: 'insensitive' } },
+        ],
+      },
+      take: 3,
+      orderBy: { createdAt: 'desc' },
+    })
+  } catch (e) {
+    console.warn(`Prisma error fetching related posts for ${slug} (often occurs during build prerendering):`, e)
+  }
 
   return (
     <div className="bg-[var(--color-ivory)] min-h-screen">
