@@ -1,58 +1,70 @@
-export const metadata = {
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
   title: 'Privacy Policy | Zariwala',
-  description: 'How Zariwala collects, uses, and protects your personal data.',
+  description: 'How Zariwala handles and protects your data, GDPR and CCPA compliance, and WhatsApp communication policies.',
 }
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-[var(--color-ivory)] py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="font-display text-4xl text-[var(--color-espresso)] mb-4">Privacy Policy</h1>
-        <p className="font-body text-sm text-[var(--color-gray-500)] mb-12">Last updated: March 2026</p>
+    <div className="bg-[var(--color-ivory)] min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-[var(--color-ivory-dark)]">
+        <h1 className="font-display text-4xl text-[var(--color-espresso)] mb-8 pb-4 border-b border-[var(--color-gold)]/20">
+          Privacy Policy
+        </h1>
+        
+        <div className="space-y-8 font-body text-[var(--color-espresso-mid)] leading-relaxed">
+          <section>
+            <p className="text-sm text-[var(--color-gray-500)] mb-4">Last updated: March 2026</p>
+            <p>
+              At Zariwala, we respect your privacy and are committed to protecting your personal data. 
+              This privacy policy explains how we collect, use, and safeguard your information when you visit our website or interact with us via WhatsApp and other channels.
+            </p>
+          </section>
 
-        {[
-          {
-            title: '1. Who We Are',
-            content: `Zariwala ("we", "our", "us") is an online platform that purchases vintage clothing and heritage textiles directly from sellers worldwide. Our contact for privacy matters is available through our Contact page.`,
-          },
-          {
-            title: '2. Information We Collect',
-            content: `When you submit an inquiry to sell your items, we collect your name, country, contact details (WhatsApp number or email address), information about the items you wish to sell, and photos you choose to upload. We may also collect standard technical data such as IP address and browser type when you visit our website.`,
-          },
-          {
-            title: '3. How We Use Your Information',
-            content: `We use the information you provide to: evaluate your items and prepare an offer; communicate with you about your inquiry; improve our platform and services; and comply with any applicable legal obligations.`,
-          },
-          {
-            title: '4. Data Sharing',
-            content: `We do not sell your personal data to third parties. We may share data with trusted service providers who help us operate our platform (such as cloud storage, email delivery, and database services), all of whom are contractually bound to protect your data.`,
-          },
-          {
-            title: '5. Photo Uploads',
-            content: `Photos you upload are stored securely using Cloudinary, a professional cloud media service. Photos are used solely for the purpose of evaluating your items. If your inquiry is closed, you may request deletion of your photos at any time by contacting us.`,
-          },
-          {
-            title: '6. Your Rights',
-            content: `Depending on your jurisdiction, you may have the right to access, correct, or delete your personal data. To exercise these rights or to ask questions about your data, please contact us via our Contact page.`,
-          },
-          {
-            title: '7. Data Retention',
-            content: `We retain your inquiry data for up to 3 years to fulfil our business obligations. You may request earlier deletion by contacting us directly.`,
-          },
-          {
-            title: '8. Cookies',
-            content: `Our website uses only essential cookies required for the site to function correctly (authentication session cookies). We do not use advertising or tracking cookies without your explicit consent.`,
-          },
-          {
-            title: '9. Changes to This Policy',
-            content: `We may update this policy from time to time. The date at the top of this page will reflect the latest revision.`,
-          },
-        ].map(section => (
-          <div key={section.title} className="mb-10">
-            <h2 className="font-display text-xl text-[var(--color-espresso)] mb-3">{section.title}</h2>
-            <p className="font-body text-[var(--color-espresso-mid)] leading-relaxed">{section.content}</p>
-          </div>
-        ))}
+          <section>
+            <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-3">1. Data Collection and Usage</h2>
+            <p>We collect information strictly necessary to provide valuation services and process purchases. This includes:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-2">
+              <li><strong>Contact Information:</strong> Phone numbers (via WhatsApp), email addresses, and names provided during inquiries.</li>
+              <li><strong>Item Information:</strong> Photos and descriptions of garments submitted for evaluation.</li>
+              <li><strong>Payment & Shipping:</strong> Bank details or PayPal addresses, strictly securely processed for payouts, and physical addresses for arranging pickups or labels.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-3">2. WhatsApp & Meta Data</h2>
+            <p>
+              We use WhatsApp Business API to facilitate rapid evaluations. When you contact us via WhatsApp:
+            </p>
+            <ul className="list-disc pl-5 mt-2 space-y-2">
+              <li>Your phone number and messages are securely processed through Meta's infrastructure.</li>
+              <li>We only use this channel to converse regarding your specific inquiry and valuation.</li>
+              <li>We will never sell or share your phone number with third-party marketers.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-3">3. GDPR & CCPA Compliance (Your Rights)</h2>
+            <p>Depending on your region, you possess fundamental rights concerning your personal data:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-2">
+              <li><strong>Right to Access:</strong> You can request a copy of the data we hold on you.</li>
+              <li><strong>Right to Rectification:</strong> You may request we correct inaccurate data.</li>
+              <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> You have the absolute right to request we delete your contact info, chat history, and submitted photos from our active systems.</li>
+            </ul>
+            <p className="mt-4">
+              To exercise these rights, please email us at <strong>hello@zariwala.online</strong>. We process all erasure requests within 14 days.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-3">4. Cookies and Analytics</h2>
+            <p>
+              We use minimal cookies combined with Google Analytics 4 (GA4) and Microsoft Clarity to understand website traffic, measure errors, and optimize the seller experience. 
+              These tools aggregate data and do not identify you individually.
+            </p>
+          </section>
+        </div>
       </div>
     </div>
   )

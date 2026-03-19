@@ -8,45 +8,65 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "How long does it take to get a valuation?",
-    answer: "We aim to respond to all inquiries with an initial valuation within 24 hours. Complex collections with many rare items may take slightly longer, but we will always communicate our timeline."
+    question: "Do you buy silk sarees and Indian heritage textiles?",
+    answer: "Yes, we actively purchase vintage Banarasi, Kanjivaram, Patola, Paithani, and other heritage textiles. We also evaluate zari and zardozi embroidery pieces, antique shawls, and vintage designer saris."
+  },
+  {
+    question: "What vintage clothing do you buy?",
+    answer: "We focus on six core categories: Denim & Workwear, Retro Sports & Streetwear, Archive Designer & Luxury, Silk Sarees & Heritage Weaves, Jackets & Outerwear, and Bags, Scarves & Accessories."
+  },
+  {
+    question: "How long does it take to get an offer?",
+    answer: "Once you submit your photos, our team reviews them within 24 hours. You'll receive a detailed response with an initial offer or a request for additional angles if needed."
+  },
+  {
+    question: "How do I get paid?",
+    answer: "We process payments immediately upon receiving and inspecting your items. We support direct Bank Transfers (NEFT/RTGS for India), PayPal, Wise, Zelle, and Venmo depending on your location."
+  },
+  {
+    question: "Do you buy items from India and Asia?",
+    answer: "Yes! We operate globally and have specialized evaluation teams for items sourced from India, Japan, Southeast Asia, the UK, and the US."
+  },
+  {
+    question: "What condition does my item need to be in?",
+    answer: "We buy items ranging from 'Fair' to 'Deadstock/Excellent'. Fades, distress, and repairs are often acceptable (especially in Denim & Workwear), but please ensure the items are accurately described in your submission."
+  },
+  {
+    question: "Is there any obligation to sell after getting an offer?",
+    answer: "Absolutely not. Our initial valuation and offer are entirely free with zero obligation. If you choose not to proceed, we simply close the inquiry."
+  },
+  {
+    question: "How do I ship my item?",
+    answer: "For certain regions like the US and UK, we provide prepaid shipping labels. For India and other regions, we will guide you on the most secure and cost-effective courier service, and the shipping costs are factored safely into your payout."
+  },
+  {
+    question: "Are my photos kept private?",
+    answer: "Yes, completely. Your photos are used solely for evaluation purposes and are never shared publicly, sold, or used without your explicit permission."
+  },
+  {
+    question: "What items don't you buy?",
+    answer: "We do not buy fast fashion brands (e.g., modern Zara, H&M, Shein), heavily soiled or contaminated garments, heavily altered modern suits, or unbranded modern basics. We also cannot buy items without clear provenance regarding authenticity if it's a luxury brand."
   },
   {
     question: "How do you calculate the price of my items?",
-    answer: "Our offers are based on four primary factors: the era/age of the garment, the specific brand and label variations, the condition and natural wear, and current market demand and rarity. We use an extensive internal database of historical sales to ensure fair pricing."
+    answer: "Offers are based on era, brand, rarity, condition, and current vintage market demand. We utilize historical sales databases to offer fair wholesale-to-retail margins."
   },
   {
     question: "Do I have to clean the clothes before sending them?",
-    answer: "While it is always appreciated, it is not strictly necessary. Please do not attempt to remove tough stains or mend items yourself if you aren't experienced — incorrect washing can significantly decrease a vintage item's value. We handle specialized cleaning."
-  },
-  {
-    question: "How and when do I get paid?",
-    answer: "We process payments immediately upon receiving and inspecting your items. For US sellers: PayPal, Zelle, Venmo, or bank transfer. UK sellers: bank transfer (BACS) or PayPal. International sellers: PayPal or Wise."
-  },
-  {
-    question: "Who pays for the shipping?",
-    answer: "For US and UK sellers, we can provide a prepaid shipping label — the cost is transparently deducted from your final offer. For international sellers or large collections, we will work with you to find the most cost-effective method."
+    answer: "While appreciated, it is not strictly necessary. Please avoid attempting to remove tough stains yourself, as incorrect washing can decrease a vintage item's value. We handle specialized cleaning."
   },
   {
     question: "What if you receive my items and change your offer?",
-    answer: "We base our offers on the photos and descriptions you provide. In rare cases where an item has significant undisclosed damage, we may need to adjust the offer. If you decline the revised offer, we ship the items back to you at our expense."
+    answer: "We base our offers on your photos. In rare cases where an item has significant undisclosed damage upon physical inspection, we may adjust the offer. If you decline the revision, we ship the items back to you at our expense."
   },
   {
     question: "Do you buy single items or entire collections?",
-    answer: "Both! We regularly buy single 'grail' pieces as well as massive estate collections of hundreds of garments. No collection is too large or too small."
+    answer: "Both! We regularly buy single 'grail' pieces as well as massive estate collections or deadstock hauls of hundreds of garments."
   },
   {
-    question: "I'm not sure if my items are vintage or valuable. Should I still contact you?",
-    answer: "Absolutely. Our team loves reviewing items. Even if you're unsure of an item's history, send a few clear photos of the garment and its tags — our experts will gladly take a look at no obligation."
-  },
-  {
-    question: "Which countries do you buy from?",
-    answer: "We buy from sellers anywhere in the world. We have experience working with sellers in the US, UK, Japan, Korea, India, Australia, Canada, and across Southeast Asia and Europe."
-  },
-  {
-    question: "Are my photos private?",
-    answer: "Yes, completely. Your photos are used solely for evaluation purposes and are never shared publicly, sold, or used in marketing without your explicit permission."
-  },
+    question: "I'm not sure if my items are vintage. Should I still contact you?",
+    answer: "Absolutely. Even if you're unsure of an item's history, send a few clear photos of the garment and its interior tags. Our experts will gladly evaluate it at no cost."
+  }
 ]
 
 // JSON-LD structured data for FAQ rich results in Google

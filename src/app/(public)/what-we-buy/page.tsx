@@ -6,32 +6,38 @@ const CATEGORIES = [
   {
     title: "Denim & Workwear",
     desc: "Levi's (Big E, Redline, 501s), Lee, Wrangler, Carhartt, Dickies. 1940s-1990s.",
-    image: "https://images.unsplash.com/photo-1602293589930-45aad59bc3ab?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1602293589930-45aad59bc3ab?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catDenim,
   },
   {
     title: "Archive Designer & Luxury",
     desc: "Pre-2000 archive pieces from Issey Miyake, Helmut Lang, early Ralph Lauren, Versace, Vivienne Westwood, and Japanese designer labels.",
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catDesigner,
   },
   {
     title: "Retro Sports & Streetwear",
     desc: "Champion Reverse Weave, early Nike and Adidas, band and graphic tees, Olympic and collegiate gear, single-stitch construction (1970s–1990s).",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catStreetwear,
   },
   {
     title: "Silk Sarees & Heritage Weaves",
     desc: "Banarasi and Kanjivaram silks, Patola and Paithani weaves, zari and zardozi embroidery, vintage saris and dupattas, antique shawls, and Japanese kimono and obi.",
-    image: "https://images.unsplash.com/photo-1528459801416-a1e53ed07252?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1528459801416-a1e53ed07252?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catHeritage,
   },
   {
     title: "Jackets & Outerwear",
     desc: "Leather jackets, trench coats, military surplus, classic wool overcoats.",
-    image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catOuterwear,
   },
   {
     title: "Bags, Scarves & Accessories",
     desc: "Quality leather bags, belts, silk scarves, and classic sunglasses.",
-    image: "https://images.unsplash.com/photo-1550993444-2396e95222bf?auto=format&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1550993444-2396e95222bf?auto=format&fit=crop&q=80",
+    waLink: WA_LINKS.catAccessories,
   }
 ]
 
@@ -69,7 +75,10 @@ export default function WhatWeBuyPage() {
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                   <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-4">{cat.title}</h2>
-                  <p className="font-body text-[var(--color-espresso-mid)] flex-1">{cat.desc}</p>
+                  <p className="font-body text-[var(--color-espresso-mid)] flex-1 mb-6">{cat.desc}</p>
+                  <a href={cat.waLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[var(--color-gold)] font-body font-medium hover:text-[var(--color-gold-dark)] transition-colors">
+                    Send photos on WhatsApp <span className="ml-2">→</span>
+                  </a>
                 </div>
               </div>
             ))}

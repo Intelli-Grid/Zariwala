@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import AnalyticsTracker from '@/components/shared/AnalyticsTracker'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -60,6 +62,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const GA_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || ''
+  const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || ''
+
   return (
     <html lang="en">
       <head>
@@ -69,12 +74,27 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        {CLARITY_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "${CLARITY_ID}");
+              `,
+            }}
+          />
+        )}
       </head>
       <body
         className="min-h-screen font-body text-[var(--body-color)] bg-[var(--zari-pale)]"
         suppressHydrationWarning
       >
+        <AnalyticsTracker />
         {children}
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   )

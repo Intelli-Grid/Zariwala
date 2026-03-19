@@ -10,12 +10,6 @@ const CATEGORY_CONTENT: Record<string, { title: string; description: string; ite
     items: ['Levi\'s 501, 505, 517, 646', 'Lee 101, 101B, Rider jackets', 'Wrangler 11MW, 13MWZ', 'Big E selvedge', 'Japanese reproduction denim', 'Workwear chore coats'],
     priceRange: '₹1,500 – ₹65,000+',
   },
-  'band-tees': {
-    title: 'Vintage Band T-Shirts',
-    description: 'Single-stitch tour tees, concert shirts, and early band merch from the 1970s through the 1990s are among the most sought-after items in the vintage market. We pay premium prices for authentic pieces via secure INR transfers.',
-    items: ['Concert tour tees (pre-2000)', 'Single-stitch construction', 'Bootleg and official merch', 'Punk, metal, rock, rap', 'Screen printed graphics', 'Deadstock and unworn examples'],
-    priceRange: '₹2,500 – ₹1,25,000+',
-  },
   'outerwear': {
     title: 'Jackets & Outerwear',
     description: 'Military surplus, workwear, sport, and heritage outerwear from iconic American and Japanese makers. We look for condition, provenance, and rare colourways, offering free doorstep verification across India.',
@@ -99,6 +93,35 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="bg-[var(--color-ivory)] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://zariwala.online"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Categories",
+                "item": "https://zariwala.online/what-we-buy"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": content.title,
+                "item": `https://zariwala.online/categories/${slug}`
+              }
+            ]
+          })
+        }}
+      />
       {/* Hero */}
       <section className="bg-[var(--color-espresso)] py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

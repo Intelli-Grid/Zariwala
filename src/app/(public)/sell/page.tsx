@@ -1,17 +1,17 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Upload, X, CheckCircle, Loader2 } from 'lucide-react'
+import { sendGAEvent } from '@next/third-parties/google'
 
 const CATEGORIES = [
-  { value: 'Vintage Denim', label: 'Vintage Denim / Levi\'s' },
-  { value: 'Band T-Shirts', label: 'Band T-Shirts / Concert Tees' },
-  { value: 'Outerwear', label: 'Outerwear & Jackets' },
-  { value: 'Sportswear', label: 'Retro Sportswear' },
-  { value: 'Designer', label: 'Designer / Archive Fashion' },
-  { value: 'Heritage Textiles', label: 'Heritage Textiles / Silk Sarees' },
-  { value: 'Mixed Collection', label: 'Mixed Collection' },
+  { value: 'Denim & Workwear', label: 'Denim & Workwear' },
+  { value: 'Retro Sports & Streetwear', label: 'Retro Sports & Streetwear' },
+  { value: 'Archive Designer & Luxury', label: 'Archive Designer & Luxury' },
+  { value: 'Silk Sarees & Heritage Weaves', label: 'Silk Sarees & Heritage Weaves' },
+  { value: 'Jackets & Outerwear', label: 'Jackets & Outerwear' },
+  { value: 'Bags, Scarves & Accessories', label: 'Bags, Scarves & Accessories' },
 ]
 
 const COUNTRIES = [
@@ -58,6 +58,10 @@ export default function SellPage() {
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
+
+  useEffect(() => {
+    sendGAEvent({ event: 'sell_form_started' })
+  }, [])
 
   const [formData, setFormData] = useState({
     sellerName: '',
@@ -464,6 +468,31 @@ export default function SellPage() {
               </div>
             )}
           </form>
+        </div>
+
+        {/* Trust Signals */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center animate-fade-in-up" style={{ color: 'var(--muted)' }}>
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🛡️</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>No Obligation</h3>
+            <p className="font-body text-xs">You are completely free to decline our offer. Valuations are 100% free.</p>
+          </div>
+          <div className="flex flex-col items-center">
+             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>⚡</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Fast Responses</h3>
+            <p className="font-body text-xs">Quick evaluations and same-day deposits upon securing agreed items.</p>
+          </div>
+          <div className="flex flex-col items-center">
+             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🌍</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Global Purchasing</h3>
+            <p className="font-body text-xs">We provide pre-paid FedEx labels to sellers worldwide seamlessly.</p>
+          </div>
         </div>
       </div>
     </div>

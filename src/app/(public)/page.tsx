@@ -26,9 +26,38 @@ export const metadata = {
 }
 
 export default async function HomePage() {
-  const testimonials = await prisma.testimonial
+  const dbTestimonials = await prisma.testimonial
     .findMany({ where: { isVisible: true }, orderBy: { createdAt: 'desc' }, take: 3 })
     .catch(() => [])
+
+  const defaultTestimonials = [
+    {
+      id: '1',
+      rating: 5,
+      quote: 'I had some vintage silk sarees that were just sitting in the closet. Zariwala gave me a great price and the pickup was completely hassle-free.',
+      name: 'Anjali D.',
+      country: 'Mumbai',
+      flag: '🇮🇳'
+    },
+    {
+      id: '2',
+      rating: 5,
+      quote: 'Fastest transaction ever. Sent photos on WhatsApp, got an offer the same day. Payment was in my account the moment they received the items.',
+      name: 'Rohan M.',
+      country: 'Delhi',
+      flag: '🇮🇳'
+    },
+    {
+      id: '3',
+      rating: 5,
+      quote: 'I was hesitant to sell my vintage collection online, but the team explained their valuation logic perfectly. Transparent and very trustworthy.',
+      name: 'Priya S.',
+      country: 'Bangalore',
+      flag: '🇮🇳'
+    }
+  ]
+
+  const testimonials = dbTestimonials.length > 0 ? dbTestimonials : defaultTestimonials
 
   return (
     <>

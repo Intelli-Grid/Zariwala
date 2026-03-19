@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 import { buildPostFormLink } from '@/lib/whatsapp'
+import { sendGAEvent } from '@next/third-parties/google'
 
 const WA_ICON = (
   <svg className="w-5 h-5 fill-white flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -16,6 +17,14 @@ function SuccessContent() {
   const searchParams = useSearchParams()
   const ref = searchParams.get('ref') ?? ''
   const name = searchParams.get('name') ?? 'there'
+  const fired = useRef(false)
+
+  useEffect(() => {
+    if (!fired.current) {
+      sendGAEvent({ event: 'sell_form_completed', value: { ref } })
+      fired.current = true
+    }
+  }, [ref])
 
   const waHref = ref && name
     ? buildPostFormLink(name, ref)
