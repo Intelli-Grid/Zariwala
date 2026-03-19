@@ -11,18 +11,18 @@ const WA_ICON = (
 )
 
 const CATEGORIES = [
-  { title: 'Vintage Denim', img: '1496217590455-aa440b4bc45c', href: '/categories/vintage-denim', waKey: 'catDenim' },
-  { title: 'Band & Graphic Tees', img: '1529324541740-fcbd31e330a6', href: '/categories/band-tees', waKey: 'catSportswear' },
-  { title: 'Retro Sportswear', img: '1518002171953-a080f0e0fea9', href: '/categories/retro-sportswear', waKey: 'catSportswear' },
-  { title: 'Designer Labels', img: '1445205170230-053b83016050', href: '/categories/designer-labels', waKey: 'catDesigner' },
-  { title: 'Vintage Outerwear', img: '1551488831-00ddcb6c6bd3', href: '/categories/vintage-outerwear', waKey: 'catOuterwear' },
-  { title: 'Heritage Textiles', img: '1528459801416-a1e53ed07252', href: '/categories/heritage-textiles', waKey: 'catHeritage' },
+  { title: 'Denim & Workwear', img: '1496217590455-aa440b4bc45c', href: '/categories/denim', waKey: 'catDenim' },
+  { title: 'Retro Sports & Streetwear', img: '1518002171953-a080f0e0fea9', href: '/categories/sportswear', waKey: 'catStreetwear' },
+  { title: 'Archive Designer & Luxury', img: '1445205170230-053b83016050', href: '/categories/designer', waKey: 'catDesigner' },
+  { title: 'Jackets & Outerwear', img: '1551488831-00ddcb6c6bd3', href: '/categories/outerwear', waKey: 'catOuterwear' },
+  { title: 'Silk Sarees & Heritage Weaves', img: '1528459801416-a1e53ed07252', href: '/categories/heritage-textiles', waKey: 'catHeritage' },
+  { title: 'Bags, Scarves & Accessories', img: '1550993444-2396e95222bf', href: '/categories/accessories', waKey: 'catAccessories' },
 ] as const
 
 export const metadata = {
   title: 'Zariwala — We Buy Your Vintage Clothing Worldwide',
   description:
-    'Zariwala buys quality vintage clothing from sellers in the US, UK, and Asia. Fair prices, simple process. Send photos via WhatsApp for a free valuation.',
+    'Zariwala buys quality vintage clothing, silk sarees, and heritage weaves from sellers across India. Fair prices, simple process. Send photos via WhatsApp for a free valuation.',
 }
 
 export default async function HomePage() {
@@ -49,7 +49,7 @@ export default async function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
           <div className="max-w-2xl">
             <span className="font-ui text-xs font-semibold uppercase tracking-[0.22em] mb-6 block" style={{ color: 'var(--zari-gold)' }}>
-              🪡 Vintage Clothing Buyers · US · UK · Asia
+              🪡 Vintage Clothing Buyers · Asia
             </span>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 italic" style={{ color: '#fff' }}>
               We Buy Your<br />
@@ -57,7 +57,7 @@ export default async function HomePage() {
             </h1>
             <p className="font-body text-xl mb-4 leading-relaxed font-light max-w-lg" style={{ color: 'rgba(253,246,227,0.85)' }}>
               Send us photos on WhatsApp. Get a fair offer in 24 hours.
-              Sellers from the US, UK, and Asia welcome.
+              We buy vintage clothing, silk sarees, and heritage weaves from across India.
             </p>
 
             {/* WhatsApp primary CTA */}
@@ -84,7 +84,7 @@ export default async function HomePage() {
             {/* Trust signals */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 font-ui text-sm" style={{ color: 'rgba(253,246,227,0.65)' }}>
               <span>✓ 24-hr valuations</span>
-              <span>✓ 20+ countries served</span>
+              <span>✓ 20+ cities served</span>
               <span>✓ No obligation</span>
               <span>✓ Secure payment</span>
             </div>
@@ -98,7 +98,7 @@ export default async function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:justify-between font-ui text-xs font-semibold uppercase tracking-widest" style={{ color: 'rgba(253,246,227,0.45)' }}>
             <span>✦ 24hr Response Guarantee</span>
             <span>✦ Fair, Transparent Pricing</span>
-            <span>✦ Worldwide Collection</span>
+            <span>✦ India-wide Collection</span>
             <span>✦ Secure Payment</span>
           </div>
         </div>
@@ -111,25 +111,35 @@ export default async function HomePage() {
             <div className="section-divider" />
             <h2 className="font-display text-4xl md:text-5xl" style={{ color: 'var(--ink)' }}>How It Works</h2>
             <p className="font-body text-lg mt-4 max-w-xl mx-auto" style={{ color: 'var(--body-color)' }}>
-              Three simple steps between your vintage wardrobe and your payment.
+              Five simple steps between your vintage wardrobe and your payment.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
             {[
               {
                 n: '1',
                 title: 'Send Photos on WhatsApp',
-                body: 'Message Zariwala on WhatsApp and send clear photos of your items. Front, back, labels, any flaws. One photo is enough to start.',
+                body: 'Message Zariwala on WhatsApp and send clear photos of your items — front, back, labels, and any flaws.',
               },
               {
                 n: '2',
-                title: 'We Make You an Offer',
-                body: 'Our vintage specialists review your photos within 24 hours. You get a fair, no-obligation cash offer via WhatsApp.',
+                title: 'You Ship for the Valuation',
+                body: 'Ship your item to us for a hands-on valuation. We guide you through the process every step of the way.',
               },
               {
                 n: '3',
-                title: 'You Ship, We Pay',
-                body: 'Accept, ship your item (we can arrange labels for US/UK), and receive payment within 24 hours of verification.',
+                title: 'We Make You an Offer',
+                body: 'Our vintage specialists assess your item and make you a fair, transparent cash offer within 24 hours.',
+              },
+              {
+                n: '4',
+                title: 'Offer Confirmed',
+                body: 'Happy with the offer? Simply confirm and we take care of everything from here.',
+              },
+              {
+                n: '5',
+                title: 'We Pay You',
+                body: 'Receive your payment promptly once the offer is confirmed. Fast, secure, and hassle-free.',
               },
             ].map(step => (
               <div key={step.n} className="flex flex-col items-center text-center">
@@ -139,8 +149,8 @@ export default async function HomePage() {
                 >
                   {step.n}
                 </div>
-                <h3 className="font-display text-2xl mb-3" style={{ color: 'var(--ink)' }}>{step.title}</h3>
-                <p className="font-body leading-relaxed" style={{ color: 'var(--body-color)' }}>{step.body}</p>
+                <h3 className="font-display text-xl mb-3" style={{ color: 'var(--ink)' }}>{step.title}</h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--body-color)' }}>{step.body}</p>
               </div>
             ))}
           </div>
@@ -323,7 +333,7 @@ export default async function HomePage() {
             Ready to sell? It takes 2 minutes.
           </h2>
           <p className="font-body text-lg mb-3 opacity-70" style={{ color: 'var(--zari-warm)' }}>
-            Free, no-obligation valuations. We buy from anywhere in the world.
+            Free, no-obligation valuations. We buy from across India.
           </p>
           <p className="font-ui text-sm mb-10" style={{ color: 'var(--muted)' }}>avg response time: under 4 hours</p>
 

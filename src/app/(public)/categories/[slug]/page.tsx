@@ -5,7 +5,7 @@ import { buildCategoryLink } from '@/lib/whatsapp'
 
 const CATEGORY_CONTENT: Record<string, { title: string; description: string; items: string[]; priceRange: string }> = {
   'denim': {
-    title: 'Vintage Denim',
+    title: 'Denim & Workwear',
     description: 'From selvedge Levi\'s to rare Lee Ranch coats, we actively seek out the finest vintage denim from the 1940s through the 1990s. Heavy workwear, trucker jackets, and deadstock are especially welcome.',
     items: ['Levi\'s 501, 505, 517, 646', 'Lee 101, 101B, Rider jackets', 'Wrangler 11MW, 13MWZ', 'Big E selvedge', 'Japanese reproduction denim', 'Workwear chore coats'],
     priceRange: '$20 – $800+',
@@ -17,28 +17,41 @@ const CATEGORY_CONTENT: Record<string, { title: string; description: string; ite
     priceRange: '$30 – $1,500+',
   },
   'outerwear': {
-    title: 'Vintage Outerwear',
+    title: 'Jackets & Outerwear',
     description: 'Military surplus, workwear, sport, and heritage outerwear from iconic American and Japanese makers. We look for condition, provenance, and rare colourways.',
     items: ['MA-1 / MA-2 flight jackets', 'M-65 field jackets', 'Varsity / letterman jackets', 'Carhartt Detroit & Chore', 'Baracuta G9 Harrington', 'N-1 deck jackets'],
     priceRange: '$40 – $600+',
   },
   'sportswear': {
-    title: 'Vintage Sportswear',
+    title: 'Retro Sports & Streetwear',
     description: 'Rare collegiate, Olympic, and athletic wear from the 1960s through the 1990s. Champion Reverse Weave, Russell Athletic, and early Nike and Adidas pieces are in high demand.',
-    items: ['Champion Reverse Weave sweatshirts', 'Russell Athletic basics', 'Early Nike and Adidas', 'Olympic and team USA gear', 'Collegiate crewnecks', 'NBA, NFL, MLB heritage'],
+    items: ['Champion Reverse Weave sweatshirts', 'Russell Athletic basics', 'Early Nike and Adidas', 'Olympic and team USA gear', 'Vintage band and graphic tees (single-stitch)', 'Concert tour shirts (pre-2000)'],
     priceRange: '$25 – $500+',
   },
   'designer': {
-    title: 'Vintage Designer Labels',
+    title: 'Archive Designer & Luxury',
     description: 'Early pieces from established luxury houses, pre-2000 items from iconic designers, and archival fashion pieces. We have a specialist team for evaluating designer vintage.',
     items: ['Issey Miyake, Comme des Garçons', 'Yohji Yamamoto, Helmut Lang', 'Early Calvin Klein, Ralph Lauren', 'Versace, Moschino', 'Vivienne Westwood', 'Jean Paul Gaultier'],
     priceRange: '$50 – $5,000+',
   },
   'heritage-textiles': {
-    title: 'Heritage Textiles',
-    description: 'Rare and fine textiles including handwoven silks, zari-work, and heritage pieces from Asia. We work with specialist assessors for heritage and ethnic textile collections.',
-    items: ['Benarasi and Kanjivaram silks', 'Zardozi and zari embroidery', 'Handloom and ikat weaves', 'Obi belts and Japanese kimono', 'Vintage saris and dupattas', 'Antique shawls and stoles'],
-    priceRange: '$30 – $2,000+',
+    title: 'Silk Sarees & Heritage Weaves',
+    description: 'Rare banarasi and kanjivaram silks, zari and zardozi embroidery, vintage handloom saris, patola and paithani weaves, and antique textiles from across India and Asia. We have specialist assessors for Indian heritage textile collections.',
+    items: [
+      'Banarasi and Kanjivaram silks',
+      'Zari and zardozi embroidery pieces',
+      'Patola, Paithani, and ikat weaves',
+      'Vintage saris and dupattas',
+      'Antique shawls and stoles',
+      'Japanese kimono and obi belts',
+    ],
+    priceRange: '₹500 – ₹1,50,000+',
+  },
+  'accessories': {
+    title: 'Bags, Scarves & Accessories',
+    description: 'Quality vintage leather goods, silk scarves, and classic accessories from established luxury houses and heritage brands.',
+    items: ['Luxury leather bags and briefcases', 'Silk scarves (Hermès, Dior, etc.)', 'Classic sunglasses (Ray-Ban, Persol)', 'Vintage belts and leather goods', 'Silver and artisan jewelry'],
+    priceRange: '$20 – $400+',
   },
 }
 

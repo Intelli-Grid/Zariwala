@@ -4,32 +4,32 @@ import { WA_LINKS } from '@/lib/whatsapp'
 
 const CATEGORIES = [
   {
-    title: "Vintage Denim & Workwear",
+    title: "Denim & Workwear",
     desc: "Levi's (Big E, Redline, 501s), Lee, Wrangler, Carhartt, Dickies. 1940s-1990s.",
     image: "https://images.unsplash.com/photo-1602293589930-45aad59bc3ab?auto=format&fit=crop&q=80"
   },
   {
-    title: "Designer Labels",
-    desc: "Archive pieces from Ralph Lauren, YSL, Burberry, Armani, and Japanese designers.",
+    title: "Archive Designer & Luxury",
+    desc: "Pre-2000 archive pieces from Issey Miyake, Helmut Lang, early Ralph Lauren, Versace, Vivienne Westwood, and Japanese designer labels.",
     image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80"
   },
   {
-    title: "Retro Sportswear",
-    desc: "Nike, Adidas, Champion, Fila, Reebok (1970s-1990s). Single stitch tees, track jackets.",
+    title: "Retro Sports & Streetwear",
+    desc: "Champion Reverse Weave, early Nike and Adidas, band and graphic tees, Olympic and collegiate gear, single-stitch construction (1970s–1990s).",
     image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80"
   },
   {
-    title: "Heritage Textiles",
-    desc: "Vintage silk sarees, banarasis, kanjivarams, patolas, and handloom pieces.",
+    title: "Silk Sarees & Heritage Weaves",
+    desc: "Banarasi and Kanjivaram silks, Patola and Paithani weaves, zari and zardozi embroidery, vintage saris and dupattas, antique shawls, and Japanese kimono and obi.",
     image: "https://images.unsplash.com/photo-1528459801416-a1e53ed07252?auto=format&fit=crop&q=80"
   },
   {
-    title: "Vintage Outerwear",
+    title: "Jackets & Outerwear",
     desc: "Leather jackets, trench coats, military surplus, classic wool overcoats.",
     image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&q=80"
   },
   {
-    title: "Vintage Accessories",
+    title: "Bags, Scarves & Accessories",
     desc: "Quality leather bags, belts, silk scarves, and classic sunglasses.",
     image: "https://images.unsplash.com/photo-1550993444-2396e95222bf?auto=format&fit=crop&q=80"
   }
@@ -37,7 +37,7 @@ const CATEGORIES = [
 
 export const metadata = {
   title: 'What We Buy | Zariwala',
-  description: 'Zariwala buys vintage denim, band tees, sportswear, designer labels, outerwear, and heritage textiles worldwide. See what we buy and current price ranges.',
+  description: 'Zariwala buys vintage denim, archive designer pieces, streetwear, outerwear, and silk sarees/heritage weaves worldwide. See what we buy and current price ranges.',
 }
 
 export default function WhatWeBuyPage() {

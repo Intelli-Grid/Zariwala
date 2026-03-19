@@ -28,11 +28,14 @@ export const WA_LINKS = {
   catSportswear: buildWhatsAppLink(
     "Hi! I have vintage sportswear I'd like to sell."
   ),
+  catStreetwear: buildWhatsAppLink(
+    "Hi! I have vintage sportswear or a band tee I'd like to sell."
+  ),
   catDesigner: buildWhatsAppLink(
     "Hi! I have a vintage designer item I'd like to sell. Can I send photos?"
   ),
   catHeritage: buildWhatsAppLink(
-    "Hi! I have heritage textiles I'd like to sell. Can I send photos?"
+    "Hi! I have a silk saree or heritage textile I'd like to sell. Can I send photos?"
   ),
   catOuterwear: buildWhatsAppLink(
     "Hi! I have vintage outerwear I'd like to sell."

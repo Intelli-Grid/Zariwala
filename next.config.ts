@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/categories/band-tees',
+        destination: '/categories/sportswear',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig
