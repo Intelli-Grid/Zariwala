@@ -227,9 +227,9 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
             {[
-              { item: "Levi's 501 Jeans (1970s–80s)", fair: '$20–40', good: '$40–100', excellent: '$100–400+' },
-              { item: 'Vintage Band Tee (1970–90)', fair: '$30–60', good: '$60–150', excellent: '$150–600+' },
-              { item: 'Heritage Silk / Zari', fair: '$30–80', good: '$80–300', excellent: '$300–2,000+' },
+              { item: "Levi's 501 Jeans (1970s–80s)", fair: '₹1,500–3,500', good: '₹3,500–8,500', excellent: '₹8,500–35,000+' },
+              { item: 'Vintage Band Tee (1970–90)', fair: '₹2,500–5,000', good: '₹5,000–12,500', excellent: '₹12,500–50,000+' },
+              { item: 'Heritage Silk Saree / Zari', fair: '₹2,500–6,500', good: '₹6,500–25,000', excellent: '₹25,000–1,50,000+' },
             ].map(row => (
               <div
                 key={row.item}

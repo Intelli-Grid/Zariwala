@@ -6,33 +6,33 @@ import { buildCategoryLink } from '@/lib/whatsapp'
 const CATEGORY_CONTENT: Record<string, { title: string; description: string; items: string[]; priceRange: string }> = {
   'denim': {
     title: 'Denim & Workwear',
-    description: 'From selvedge Levi\'s to rare Lee Ranch coats, we actively seek out the finest vintage denim from the 1940s through the 1990s. Heavy workwear, trucker jackets, and deadstock are especially welcome.',
+    description: 'From selvedge Levi\'s to rare Lee Ranch coats, we actively seek out the finest vintage denim from the 1940s through the 1990s. Heavy workwear, trucker jackets, and deadstock are especially welcome from Indian sellers.',
     items: ['Levi\'s 501, 505, 517, 646', 'Lee 101, 101B, Rider jackets', 'Wrangler 11MW, 13MWZ', 'Big E selvedge', 'Japanese reproduction denim', 'Workwear chore coats'],
-    priceRange: '$20 – $800+',
+    priceRange: '₹1,500 – ₹65,000+',
   },
   'band-tees': {
     title: 'Vintage Band T-Shirts',
-    description: 'Single-stitch tour tees, concert shirts, and early band merch from the 1970s through the 1990s are among the most sought-after items in the vintage market. We pay premium prices for authentic pieces.',
+    description: 'Single-stitch tour tees, concert shirts, and early band merch from the 1970s through the 1990s are among the most sought-after items in the vintage market. We pay premium prices for authentic pieces via secure INR transfers.',
     items: ['Concert tour tees (pre-2000)', 'Single-stitch construction', 'Bootleg and official merch', 'Punk, metal, rock, rap', 'Screen printed graphics', 'Deadstock and unworn examples'],
-    priceRange: '$30 – $1,500+',
+    priceRange: '₹2,500 – ₹1,25,000+',
   },
   'outerwear': {
     title: 'Jackets & Outerwear',
-    description: 'Military surplus, workwear, sport, and heritage outerwear from iconic American and Japanese makers. We look for condition, provenance, and rare colourways.',
+    description: 'Military surplus, workwear, sport, and heritage outerwear from iconic American and Japanese makers. We look for condition, provenance, and rare colourways, offering free doorstep verification across India.',
     items: ['MA-1 / MA-2 flight jackets', 'M-65 field jackets', 'Varsity / letterman jackets', 'Carhartt Detroit & Chore', 'Baracuta G9 Harrington', 'N-1 deck jackets'],
-    priceRange: '$40 – $600+',
+    priceRange: '₹3,000 – ₹50,000+',
   },
   'sportswear': {
     title: 'Retro Sports & Streetwear',
-    description: 'Rare collegiate, Olympic, and athletic wear from the 1960s through the 1990s. Champion Reverse Weave, Russell Athletic, and early Nike and Adidas pieces are in high demand.',
+    description: 'Rare collegiate, Olympic, and athletic wear from the 1960s through the 1990s. Champion Reverse Weave, Russell Athletic, and early Nike and Adidas pieces are in high demand. Fast appraisals within 24 hours.',
     items: ['Champion Reverse Weave sweatshirts', 'Russell Athletic basics', 'Early Nike and Adidas', 'Olympic and team USA gear', 'Vintage band and graphic tees (single-stitch)', 'Concert tour shirts (pre-2000)'],
-    priceRange: '$25 – $500+',
+    priceRange: '₹2,000 – ₹40,000+',
   },
   'designer': {
     title: 'Archive Designer & Luxury',
-    description: 'Early pieces from established luxury houses, pre-2000 items from iconic designers, and archival fashion pieces. We have a specialist team for evaluating designer vintage.',
+    description: 'Early pieces from established luxury houses, pre-2000 items from iconic designers, and archival fashion pieces. We have a specialist team for evaluating designer vintage sourced from India.',
     items: ['Issey Miyake, Comme des Garçons', 'Yohji Yamamoto, Helmut Lang', 'Early Calvin Klein, Ralph Lauren', 'Versace, Moschino', 'Vivienne Westwood', 'Jean Paul Gaultier'],
-    priceRange: '$50 – $5,000+',
+    priceRange: '₹4,000 – ₹4,00,000+',
   },
   'heritage-textiles': {
     title: 'Silk Sarees & Heritage Weaves',
@@ -49,9 +49,9 @@ const CATEGORY_CONTENT: Record<string, { title: string; description: string; ite
   },
   'accessories': {
     title: 'Bags, Scarves & Accessories',
-    description: 'Quality vintage leather goods, silk scarves, and classic accessories from established luxury houses and heritage brands.',
+    description: 'Quality vintage leather goods, silk scarves, and classic accessories from established luxury houses and heritage brands. Secure payment upon authentication.',
     items: ['Luxury leather bags and briefcases', 'Silk scarves (Hermès, Dior, etc.)', 'Classic sunglasses (Ray-Ban, Persol)', 'Vintage belts and leather goods', 'Silver and artisan jewelry'],
-    priceRange: '$20 – $400+',
+    priceRange: '₹1,500 – ₹35,000+',
   },
 }
 
