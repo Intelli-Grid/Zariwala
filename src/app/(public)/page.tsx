@@ -11,12 +11,12 @@ const WA_ICON = (
 )
 
 const CATEGORIES = [
-  { title: 'Denim & Workwear', img: '1496217590455-aa440b4bc45c', href: '/categories/denim', waKey: 'catDenim' },
-  { title: 'Retro Sports & Streetwear', img: '1518002171953-a080f0e0fea9', href: '/categories/sportswear', waKey: 'catStreetwear' },
+  { title: 'Denim & Workwear', img: '1584273143981-41c073dfe8f8', href: '/categories/denim', waKey: 'catDenim' },
+  { title: 'Retro Sports & Streetwear', img: '1515886657613-9f3515b0c78f', href: '/categories/sportswear', waKey: 'catStreetwear' },
   { title: 'Archive Designer & Luxury', img: '1445205170230-053b83016050', href: '/categories/designer', waKey: 'catDesigner' },
   { title: 'Jackets & Outerwear', img: '1551488831-00ddcb6c6bd3', href: '/categories/outerwear', waKey: 'catOuterwear' },
-  { title: 'Silk Sarees & Heritage Weaves', img: '1528459801416-a1e53ed07252', href: '/categories/heritage-textiles', waKey: 'catHeritage' },
-  { title: 'Bags, Scarves & Accessories', img: '1550993444-2396e95222bf', href: '/categories/accessories', waKey: 'catAccessories' },
+  { title: 'Silk Sarees & Heritage Weaves', img: '1607083206968-13611e3d76db', href: '/categories/heritage-textiles', waKey: 'catHeritage' },
+  { title: 'Bags, Scarves & Accessories', img: '1584916201218-f4242ceb4809', href: '/categories/accessories', waKey: 'catAccessories' },
 ] as const
 
 export const metadata = {
@@ -65,7 +65,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden min-h-[88vh] flex items-center" style={{ background: 'var(--ink)' }}>
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1489987707023-afc7f29aa58e?auto=format&fit=crop&q=80&w=1600"
+            src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=1600"
             alt="Vintage clothing rack — Zariwala buys quality vintage worldwide"
             fill
             sizes="100vw"

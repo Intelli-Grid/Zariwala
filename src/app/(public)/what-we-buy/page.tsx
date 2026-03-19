@@ -6,7 +6,7 @@ const CATEGORIES = [
   {
     title: "Denim & Workwear",
     desc: "Levi's (Big E, Redline, 501s), Lee, Wrangler, Carhartt, Dickies. 1940s-1990s.",
-    image: "https://images.unsplash.com/photo-1602293589930-45aad59bc3ab?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&q=80",
     waLink: WA_LINKS.catDenim,
   },
   {
@@ -24,7 +24,7 @@ const CATEGORIES = [
   {
     title: "Silk Sarees & Heritage Weaves",
     desc: "Banarasi and Kanjivaram silks, Patola and Paithani weaves, zari and zardozi embroidery, vintage saris and dupattas, antique shawls, and Japanese kimono and obi.",
-    image: "https://images.unsplash.com/photo-1528459801416-a1e53ed07252?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&q=80",
     waLink: WA_LINKS.catHeritage,
   },
   {
@@ -36,7 +36,7 @@ const CATEGORIES = [
   {
     title: "Bags, Scarves & Accessories",
     desc: "Quality leather bags, belts, silk scarves, and classic sunglasses.",
-    image: "https://images.unsplash.com/photo-1550993444-2396e95222bf?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&q=80",
     waLink: WA_LINKS.catAccessories,
   }
 ]
