@@ -76,9 +76,11 @@ export default function WhatWeBuyPage() {
                 <div className="p-8 flex flex-col flex-1">
                   <h2 className="font-display text-2xl text-[var(--color-espresso)] mb-4">{cat.title}</h2>
                   <p className="font-body text-[var(--color-espresso-mid)] flex-1 mb-6">{cat.desc}</p>
-                  <a href={cat.waLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[var(--color-gold)] font-body font-medium hover:text-[var(--color-gold-dark)] transition-colors">
-                    Send photos on WhatsApp <span className="ml-2">→</span>
-                  </a>
+                  <Link href={`/sell?category=${[
+                    'denim', 'designer', 'sportswear', 'heritage-textiles', 'outerwear', 'accessories'
+                  ][i]}`} className="inline-flex items-center text-[var(--color-gold)] font-body font-medium hover:text-[var(--color-gold-dark)] transition-colors gap-2">
+                    <span className="animate-pulse">●</span> Make an Offer →
+                  </Link>
                 </div>
               </div>
             ))}

@@ -78,6 +78,42 @@ export function buildCategoryLink(categoryName: string): string {
   )
 }
 
+export interface OfferFormData {
+  category: string;
+  itemType: string;
+  era: string;
+  itemCount: number;
+  condition: 'Excellent' | 'Good' | 'Fair' | 'Poor';
+  originalTags: 'Yes' | 'No' | 'Partial';
+  flaws?: string;
+  name: string;
+  location?: string;
+}
+
+export function buildOfferLink(data: OfferFormData): string {
+  const flawsLine = data.flaws?.trim()
+    ? data.flaws.trim()
+    : 'None mentioned';
+
+  const locationLine = data.location?.trim()
+    ? `\n📍 Location: ${data.location.trim()}`
+    : '';
+
+  const message =
+    `Hi Zariwala! I'd like to sell the following:\n\n` +
+    `📦 Category: ${data.category}\n` +
+    `🏷️ Item Type: ${data.itemType}\n` +
+    `📅 Era / Decade: ${data.era}\n` +
+    `🔢 Number of Items: ${data.itemCount}\n` +
+    `⭐ Condition: ${data.condition}\n` +
+    `🏷️ Original Tags: ${data.originalTags}\n` +
+    `📝 Flaws / Notes: ${flawsLine}\n\n` +
+    `👤 My Name: ${data.name}${locationLine}\n\n` +
+    `I'll send photos now. Please let me know your offer!`;
+
+  return buildWhatsAppLink(message);
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 2: WhatsApp Cloud API — automated confirmation message
 // Called after form submission if seller provides their WhatsApp number.

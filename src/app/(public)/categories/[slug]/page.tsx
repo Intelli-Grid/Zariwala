@@ -131,9 +131,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-[var(--color-ivory)] mb-8">
             {content.title}
           </h1>
-          <p className="font-body text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="font-body text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-10">
             {content.description}
           </p>
+          <div className="flex justify-center">
+            <Link
+              href={`/sell?category=${slug}`}
+              className="inline-flex items-center gap-3 bg-[var(--color-gold)] text-[var(--color-espresso)] px-10 py-4 rounded-full font-ui font-bold shadow-xl hover:-translate-y-1 transition-transform"
+            >
+              <span className="animate-pulse">●</span> Make an Offer →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -168,17 +176,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                   Send a few clear photos on WhatsApp for a free valuation — or fill in our structured form.
                 </p>
                 <div className="flex flex-col gap-3">
-                  <a
-                    href={buildCategoryLink(content.title)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id={`category-${slug}-wa-cta`}
-                    className="btn-whatsapp text-center text-sm py-3"
-                  >
-                    💬 Send Photos on WhatsApp
-                  </a>
-                  <Link href="/sell" className="btn-ghost text-center text-sm py-2.5" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
-                    Use Inquiry Form
+                  <Link href={`/sell?category=${slug}`} className="btn-whatsapp text-center text-sm py-3 flex items-center justify-center gap-2">
+                    <span className="animate-pulse">●</span> Make an Offer on WhatsApp
                   </Link>
                 </div>
               </div>

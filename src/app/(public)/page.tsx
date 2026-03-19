@@ -212,8 +212,8 @@ export default async function HomePage() {
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.href}
-                href={cat.href}
-                className="group relative block overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                href={`/sell?category=${cat.href.split('/').pop()}`}
+                className="group relative block overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block"
                 style={{ border: '1px solid var(--border)' }}
               >
                 <div className="relative h-44 sm:h-56" style={{ background: 'var(--zari-warm)' }}>
@@ -228,8 +228,8 @@ export default async function HomePage() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
                   <h3 className="font-display text-lg sm:text-xl text-white">{cat.title}</h3>
-                  <span className="font-ui text-xs mt-0.5 block group-hover:underline" style={{ color: 'var(--zari-warm)' }}>
-                    See what we pay →
+                  <span className="font-ui text-xs mt-0.5 block group-hover:underline flex items-center gap-1" style={{ color: 'var(--zari-gold)' }}>
+                    <span className="animate-pulse">●</span> Make an Offer →
                   </span>
                 </div>
               </Link>
