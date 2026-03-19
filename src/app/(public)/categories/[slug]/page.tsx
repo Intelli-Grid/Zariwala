@@ -55,8 +55,15 @@ const CATEGORY_CONTENT: Record<string, { title: string; description: string; ite
   },
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const content = CATEGORY_CONTENT[params.slug]
+export function generateStaticParams() {
+  return Object.keys(CATEGORY_CONTENT).map((slug) => ({
+    slug: slug,
+  }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const content = CATEGORY_CONTENT[slug]
   if (!content) return { title: 'Category Not Found' }
   return {
     title: `${content.title} | Zariwala`,
@@ -64,8 +71,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
-  const content = CATEGORY_CONTENT[params.slug]
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const content = CATEGORY_CONTENT[slug]
 
   if (!content) {
     notFound()
@@ -136,7 +144,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
                     href={buildCategoryLink(content.title)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    id={`category-${params.slug}-wa-cta`}
+                    id={`category-${slug}-wa-cta`}
                     className="btn-whatsapp text-center text-sm py-3"
                   >
                     💬 Send Photos on WhatsApp
