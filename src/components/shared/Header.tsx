@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
@@ -33,19 +34,29 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
 
-          {/* Logo — Zariwala wordmark */}
-          <Link href="/" className="flex flex-col leading-none group" id="header-logo">
-            <span
-              className="font-display text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200"
-              style={{ color: 'var(--ink)', letterSpacing: '-0.02em' }}
-            >
-              Zariwala
-            </span>
-            <span
-              className="font-ui text-[10px] tracking-[0.22em] uppercase transition-colors duration-200"
-              style={{ color: 'var(--zari-gold)', marginTop: '-1px' }}
-            >
-              Vintage Clothing Buyers
+          {/* Logo — emblem + wordmark */}
+          <Link href="/" className="flex items-center gap-2.5 group" id="header-logo">
+            <Image
+              src="/zariwala-logo.png"
+              alt="Zariwala logo"
+              width={40}
+              height={40}
+              className="rounded-sm object-contain flex-shrink-0"
+              priority
+            />
+            <span className="flex flex-col leading-none">
+              <span
+                className="font-display text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200"
+                style={{ color: 'var(--ink)', letterSpacing: '-0.02em' }}
+              >
+                Zariwala
+              </span>
+              <span
+                className="font-ui text-[10px] tracking-[0.22em] uppercase transition-colors duration-200"
+                style={{ color: 'var(--zari-gold)', marginTop: '-1px' }}
+              >
+                Vintage Clothing Buyers
+              </span>
             </span>
           </Link>
 
