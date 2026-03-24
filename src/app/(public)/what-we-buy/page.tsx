@@ -66,15 +66,14 @@ export default function WhatWeBuyPage() {
                     transition: 'transform 0.25s ease, box-shadow 0.25s ease',
                   }}
                 >
-                  {/* 4:3 image with Ken Burns hover */}
-                  <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+                  {/* 4:3 image with Ken Burns hover + Z-mark watermark */}
+                  <div className="card-image-wrapper relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                     <Image
-                      src={`https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=600`}
+                      src={cat.img.startsWith('/') ? cat.img : `https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=600`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       alt={cat.name}
-                      className="object-cover transition-all duration-700 group-hover:scale-[1.07]"
-                      style={{ filter: 'brightness(0.72) sepia(0.18)' }}
+                      className="object-cover cat-img transition-transform duration-700 group-hover:scale-[1.06]"
                     />
                     {/* Bottom gradient for text legibility */}
                     <div

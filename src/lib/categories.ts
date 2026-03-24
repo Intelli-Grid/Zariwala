@@ -41,7 +41,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 3000, max: 250000, display: '₹3,000 – ₹2,50,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1607083206968-13611e3d76db',
+    img: '/images/categories/zari-sarees.png',
     waKey: 'catZariSarees',
     whatWeLookFor: [
       'Banarasi zari sarees (any era, any condition)',
@@ -110,7 +110,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 8000, max: 500000, display: '₹8,000 – ₹5,00,000' },
     cta: 'Request Valuation',
     ctaType: 'valuation',
-    img: '1445205170230-053b83016050',
+    img: '/images/categories/heritage-brocades.png',
     waKey: 'catHeritageBrocades',
     whatWeLookFor: [
       'Kinkhab — silk woven entirely with gold or silver zari',
@@ -156,7 +156,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 800, max: 40000, display: '₹800 – ₹40,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1584916201218-f4242ceb4809',
+    img: '/images/categories/silk-dupattas-stoles.png',
     waKey: 'catSilkDupattas',
     whatWeLookFor: [
       'Banarasi silk dupattas with zari border or pallu',

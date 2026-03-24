@@ -261,14 +261,13 @@ export default async function HomePage() {
                   }}
                 />
                 {/* Image */}
-                <div className="relative h-44 sm:h-52 overflow-hidden">
+                <div className="card-image-wrapper relative h-44 sm:h-52 overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=600`}
+                    src={cat.img.startsWith('/') ? cat.img : `https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=600`}
                     fill
                     sizes="(max-width: 640px) 50vw, 25vw"
                     alt={cat.name}
-                    className="object-cover transition-all duration-700 group-hover:scale-[1.06]"
-                    style={{ filter: 'brightness(0.75) sepia(0.15)' }}
+                    className="object-cover cat-img transition-transform duration-700 group-hover:scale-[1.06]"
                   />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(14,14,12,0.9) 0%, transparent 55%)' }} />
                 </div>

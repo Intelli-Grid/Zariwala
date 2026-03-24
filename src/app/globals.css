@@ -417,3 +417,39 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--gold-bright);
   color: var(--gold-bright);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   CATEGORY CARD IMAGE — Zariwala Filter System
+   Strategy doc: zariwala-category-image-strategy.md v1.0
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Default state — warm, slightly aged, muted so gold overlays read */
+.cat-img {
+  filter: brightness(0.75) sepia(0.18) saturate(1.1);
+  transition: filter 0.35s ease;
+}
+/* Hover state — brighter, less sepia, slightly more saturated */
+.group:hover .cat-img {
+  filter: brightness(0.88) sepia(0.08) saturate(1.05);
+}
+
+/* Image wrapper — positions both gradient overlay and Z-mark */
+.card-image-wrapper {
+  position: relative;
+}
+
+/* Zariwala "Z" brand mark — nearly invisible, subliminal brand presence
+   Technique: luxury house monogram embedding (Hermès, Cartier, LV)
+   opacity 0.04 = felt, not consciously seen  */
+.card-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/brand/z-mark-white.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right 12px;
+  background-size: 52px 52px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 3;
+}

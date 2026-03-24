@@ -83,11 +83,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src={`https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=1400`}
+            src={cat.img.startsWith('/') ? cat.img : `https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=1400`}
             alt={cat.name}
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover cat-img"
             style={{ filter: 'brightness(0.25) sepia(0.2)' }}
             priority
           />
