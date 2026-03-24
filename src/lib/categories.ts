@@ -64,7 +64,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 2500, max: 150000, display: '₹2,500 – ₹1,50,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1583391266724-7f0e48be3162',
+    img: '/images/categories/pure-silk-sarees.jpg',
     waKey: 'catPureSilk',
     whatWeLookFor: [
       'Kanjivaram silk sarees (any era, any colourway)',
@@ -87,7 +87,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 4000, max: 300000, display: '₹4,000 – ₹3,00,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1558618666-fcd25c85cd64',
+    img: '/images/categories/banarasi-silks.jpg',
     waKey: 'catBanarasi',
     whatWeLookFor: [
       'Banarasi brocade sarees (kadwa, cutwork, jamdani)',
@@ -133,7 +133,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 5000, max: 200000, display: '₹5,000 – ₹2,00,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1610030469983-98e550d6193c',
+    img: '/images/categories/zari-lehengas-suits.jpg',
     waKey: 'catZariLehengas',
     whatWeLookFor: [
       'Silk lehenga sets with zari or zardozi embroidery',
@@ -179,7 +179,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 600, max: 25000, display: '₹600 – ₹25,000' },
     cta: 'Make an Offer',
     ctaType: 'offer',
-    img: '1515372039744-b8f02a3ae446',
+    img: '/images/categories/zari-blouses-cholis.jpg',
     waKey: 'catZariBlouses',
     whatWeLookFor: [
       'Kinkhab or Banarasi brocade blouses (ready or unstitched)',
@@ -202,7 +202,7 @@ export const CATEGORIES: ZariCategory[] = [
     priceRange: { min: 1500, max: 80000, display: '₹1,500 – ₹80,000' },
     cta: 'Request Valuation',
     ctaType: 'valuation',
-    img: '1551488831-00ddcb6c6bd3',
+    img: '/images/categories/vintage-zari-fabric.jpg',
     waKey: 'catVintageFabric',
     whatWeLookFor: [
       'Rolled kinkhab or brocade fabric (by the yard)',
