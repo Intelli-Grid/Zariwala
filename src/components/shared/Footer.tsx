@@ -16,7 +16,6 @@ const SELL_LINKS = [
 ]
 
 const LEARN_LINKS = [
-  { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/valuation-guide', label: 'Price Guide' },
 ]

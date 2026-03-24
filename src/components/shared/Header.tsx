@@ -9,7 +9,6 @@ const NAV_LINKS = [
   { href: '/what-we-buy', label: 'What We Buy' },
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/valuation-guide', label: 'Valuation Guide' },
-  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ]
 

@@ -56,6 +56,17 @@ const nextConfig: NextConfig = {
         destination: '/categories/zari-sarees',
         permanent: true,
       },
+      // ── Temporarily deactivate blog ──
+      {
+        source: '/blog',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path*',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 }
