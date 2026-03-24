@@ -24,7 +24,7 @@ export function AnnouncementBar() {
     <div
       id="announcement-bar"
       className="text-center px-4 py-2.5 text-xs font-ui font-semibold"
-      style={{ background: 'var(--zari-gold)', color: '#fff', letterSpacing: '0.03em' }}
+      style={{ background: 'var(--gold-core)', color: 'var(--surface-void)', letterSpacing: '0.06em' }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-center">
         <span key={messageIdx}>{MESSAGES[messageIdx]}</span>

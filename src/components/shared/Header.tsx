@@ -27,9 +27,15 @@ export function Header() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(28,28,26,0.08)]'
-          : 'bg-[var(--zari-pale)]'
+          ? 'backdrop-blur-md shadow-[0_2px_20px_rgba(14,14,12,0.6)]'
+          : ''
       }`}
+      style={{
+        background: scrolled
+          ? 'rgba(26,26,23,0.96)'
+          : 'var(--surface-deep)',
+        borderBottom: '1px solid var(--border-on-dark)',
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -46,14 +52,14 @@ export function Header() {
             />
             <span className="flex flex-col leading-none">
               <span
-                className="font-display text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200"
-                style={{ color: 'var(--ink)', letterSpacing: '-0.02em' }}
+                className="font-display text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[var(--gold-bright)]"
+                style={{ color: 'var(--text-on-dark)', letterSpacing: '-0.02em' }}
               >
                 Zariwala
               </span>
               <span
                 className="font-ui text-[10px] tracking-[0.22em] uppercase transition-colors duration-200"
-                style={{ color: 'var(--zari-gold)', marginTop: '-1px' }}
+                style={{ color: 'var(--gold-core)', marginTop: '-1px' }}
               >
                 Vintage Clothing Buyers
               </span>
@@ -66,10 +72,17 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-ui text-sm font-medium transition-colors duration-200 hover:text-[var(--zari-gold)]"
-                style={{ color: 'var(--body-color)' }}
+                className="font-ui text-sm font-medium transition-colors duration-200 relative group/navlink"
+                style={{ color: 'var(--text-on-dark-sub)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-on-dark)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-on-dark-sub)')}
               >
                 {link.label}
+                {/* Gold underline on hover */}
+                <span
+                  className="absolute -bottom-1 left-0 w-0 h-px transition-all duration-200 group-hover/navlink:w-full"
+                  style={{ background: 'var(--gold-core)' }}
+                />
               </Link>
             ))}
           </nav>
@@ -92,10 +105,10 @@ export function Header() {
               Get a Quote
             </a>
 
-            {/* Sell CTA */}
+            {/* Sell CTA — gold btn-sell-now */}
             <Link
               href="/sell"
-              className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5"
+              className="hidden md:inline-flex btn-sell-now"
               id="header-sell-cta"
             >
               Sell Now
@@ -104,12 +117,13 @@ export function Header() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 rounded-full hover:bg-[var(--zari-warm)] transition-colors"
+              className="lg:hidden p-2 rounded-full transition-colors"
+              style={{ background: menuOpen ? 'var(--surface-dark)' : 'transparent' }}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             >
               {menuOpen
-                ? <X size={20} style={{ color: 'var(--ink)' }} />
-                : <Menu size={20} style={{ color: 'var(--ink)' }} />}
+                ? <X size={20} style={{ color: 'var(--text-on-dark)' }} />
+                : <Menu size={20} style={{ color: 'var(--text-on-dark)' }} />}
             </button>
           </div>
         </div>
@@ -117,20 +131,34 @@ export function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t shadow-lg" style={{ borderColor: 'var(--border)' }}>
+        <div
+          className="lg:hidden"
+          style={{
+            background: 'var(--surface-deep)',
+            borderTop: '1px solid var(--border-on-dark)',
+          }}
+        >
           <nav className="px-4 py-4 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-2.5 px-3 rounded-lg font-ui text-sm font-medium transition-colors hover:bg-[var(--zari-warm)]"
-                style={{ color: 'var(--body-color)' }}
+                className="py-2.5 px-3 rounded-lg font-ui text-sm font-medium transition-colors"
+                style={{ color: 'var(--text-on-dark-sub)' }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--text-on-dark)'
+                  e.currentTarget.style.background = 'var(--surface-dark)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'var(--text-on-dark-sub)'
+                  e.currentTarget.style.background = 'transparent'
+                }}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-3 flex flex-col gap-2">
+            <div className="mt-3 flex flex-col gap-2 pt-3" style={{ borderTop: '1px solid var(--border-on-dark)' }}>
               <a
                 href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '1XXXXXXXXXX'}?text=${encodeURIComponent("Hi Zariwala! I have vintage clothing to sell.")}`}
                 target="_blank"
@@ -143,9 +171,9 @@ export function Header() {
               <Link
                 href="/sell"
                 onClick={() => setMenuOpen(false)}
-                className="btn-ghost text-center text-sm py-3"
+                className="btn-sell-now text-center text-sm py-3"
               >
-                Submit an Inquiry
+                Sell Now →
               </Link>
             </div>
           </nav>

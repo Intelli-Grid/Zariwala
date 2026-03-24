@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const COMPANY_LINKS = [
   { href: '/about', label: 'About Us' },
@@ -40,10 +41,17 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-5">
-              <h2 className="font-display text-3xl font-bold" style={{ color: 'var(--zari-gold)' }}>
+              <Image
+                src="/zariwala-logo.png"
+                alt="Zariwala"
+                width={48}
+                height={48}
+                className="mb-3 opacity-90 rounded-sm"
+              />
+              <h2 className="font-display text-3xl font-bold" style={{ color: 'var(--text-on-dark)' }}>
                 Zariwala
               </h2>
-              <p className="font-ui text-[11px] tracking-[0.22em] uppercase mt-0.5" style={{ color: 'var(--muted)' }}>
+              <p className="font-ui text-[11px] tracking-[0.22em] uppercase mt-0.5" style={{ color: 'var(--gold-core)' }}>
                 Vintage Clothing Buyers
               </p>
             </div>
@@ -145,8 +153,15 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Gold gradient base line */}
+      <div style={{
+        height: '1px',
+        background: 'linear-gradient(to right, transparent, var(--gold-core), transparent)',
+        opacity: 0.35,
+      }} />
+
       {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+      <div style={{ borderTop: '1px solid var(--border-on-dark)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs" style={{ color: 'var(--muted)' }}>
             © {new Date().getFullYear()} Zariwala. All rights reserved.

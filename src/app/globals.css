@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -57,11 +57,47 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Lato', system-ui, sans-serif;
   --font-ui:      'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
 
   /* ── Font weight aliases (used by existing pages) ────────── */
   --font-inter:      'Inter', system-ui, sans-serif;
   --font-playfair:   'Playfair Display', Georgia, serif;
   --font-hind:       'Lato', system-ui, sans-serif;
+
+  /* ═══════════════════════════════════════════════════════════
+     ZARIWALA DESIGN SYSTEM v5.0 — Logo-derived (additive)
+     ═══════════════════════════════════════════════════════════ */
+
+  /* ── SURFACE COLORS ────────────────────────────────────── */
+  --surface-void:     #0E0E0C;   /* True near-black — hero, deepest bg */
+  --surface-deep:     #1A1A17;   /* Logo charcoal — navbar, footer */
+  --surface-dark:     #242420;   /* Dark section backgrounds, cards */
+  --surface-mid:      #F5E6C8;   /* Warm sand — light section bg */
+  --surface-pale:     #FDF6E3;   /* Cream parchment — page base, light sections */
+  --surface-white:    #FEFCF7;   /* Warm off-white — card surfaces */
+
+  /* ── GOLD RAMP (logo's three-tone metal) ───────────────── */
+  --gold-shadow:      #7A5A0A;   /* Darkest — engraved recesses */
+  --gold-core:        #B8860B;   /* Mid — dominant body tone (= --zari-gold) */
+  --gold-bright:      #D4AF37;   /* Burnished — mid-highlight */
+  --gold-highlight:   #E8C96A;   /* Near-highlight — thread peaks */
+  --gold-gleam:       #F5E0A0;   /* Pure specular — tip of raised thread */
+
+  /* ── TEXT ON DARK / LIGHT ───────────────────────────────── */
+  --text-on-dark:      #F5E0A0;  /* Warm cream-gold — headlines on dark */
+  --text-on-dark-sub:  #C8B48A;  /* Muted warm — body on dark */
+  --text-on-dark-mute: #8A7A65;  /* Subdued — captions on dark */
+  --text-on-light:     #1A1A17;  /* Near-black — headlines on light */
+  --text-on-light-sub: #3D3530;  /* Warm dark brown — body on light */
+  --text-on-light-mute:#7A6E65;  /* Muted — captions on light */
+
+  /* ── BORDER & GLOW ──────────────────────────────────────── */
+  --border-on-dark:    rgba(184, 134, 11, 0.25);
+  --border-on-light:   #DDD3C3;
+  --border-gold:       #B8860B;
+  --glow-gold:         rgba(184, 134, 11, 0.18);
+  --shadow-card:       0 4px 24px rgba(14, 14, 12, 0.55);
+  --shadow-gold-lift:  0 8px 32px rgba(184, 134, 11, 0.22);
 }
 
 /* ── Base ───────────────────────────────────────────────────── */
@@ -233,6 +269,63 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--border);
 }
 
+/* ── v5 Section Type Utilities ──────────────────────────────── */
+.dark-section { color: var(--text-on-dark-sub); }
+.dark-section h1, .dark-section h2, .dark-section h3 {
+  color: var(--text-on-dark);
+  text-shadow: 0 2px 20px rgba(184, 134, 11, 0.15);
+}
+.dark-section p { color: var(--text-on-dark-sub); }
+.light-section { color: var(--text-on-light-sub); }
+.light-section h1, .light-section h2, .light-section h3 { color: var(--text-on-light); }
+.light-section p { color: var(--text-on-light-sub); }
+
+/* ── Eyebrow label (Hermès / Cartier technique) ─────────────── */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.875rem;
+}
+.dark-section .eyebrow  { color: var(--gold-bright); }
+.light-section .eyebrow { color: var(--gold-shadow); }
+
+/* ── Gold gradient section divider ─────────────────────────── */
+.section-divider-gold {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--gold-core) 30%,
+    var(--gold-core) 70%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  margin: 0;
+}
+
+/* ── Zari weave texture overlay (3-5% opacity, dark sections) ── */
+.textured-section {
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l10 10L20 0' fill='none' stroke='%23B8860B' stroke-width='0.4' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* ── Gold shimmer scroll reveal ─────────────────────────────── */
+@keyframes goldReveal {
+  from { opacity: 0; transform: translateY(20px); filter: brightness(1.4); }
+  to   { opacity: 1; transform: translateY(0);   filter: brightness(1);   }
+}
+.reveal-on-scroll { opacity: 0; animation: none; }
+.reveal-on-scroll.in-view {
+  animation: goldReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Gold thread SVG draw animation ──────────────────────────── */
+@keyframes threadDraw { to { stroke-dashoffset: 0; } }
+
 /* ── Form Inputs ────────────────────────────────────────────── */
 .field-input {
   width: 100%;
@@ -252,3 +345,75 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── v5 Buttons ─────────────────────────────────────────────── */
+
+/* Navbar "Sell Now" — gold bg, dark text */
+.btn-sell-now {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--gold-core);
+  color: var(--surface-void);
+  border-radius: 4px;
+  padding: 0.45rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-sell-now:hover {
+  background: var(--gold-bright);
+  box-shadow: var(--shadow-gold-lift);
+}
+
+/* Final CTA band — dark bg, gold text — used on gold background */
+.btn-gold-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--surface-void);
+  color: var(--gold-bright);
+  border: 1px solid var(--gold-core);
+  border-radius: 4px;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-gold-cta:hover {
+  background: var(--gold-bright);
+  color: var(--surface-void);
+}
+
+/* Outlined ghost — used on dark section backgrounds */
+.btn-secondary-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--text-on-dark);
+  border: 1.5px solid rgba(245, 224, 160, 0.4);
+  border-radius: 4px;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-secondary-dark:hover {
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+}
