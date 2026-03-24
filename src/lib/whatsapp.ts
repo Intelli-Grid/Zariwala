@@ -43,6 +43,31 @@ export const WA_LINKS = {
   catAccessories: buildWhatsAppLink(
     "Hi! I have vintage accessories I'd like to sell."
   ),
+  // ── v5 Zari & Silk categories ──────────────────────────────────────────────
+  catZariSarees: buildWhatsAppLink(
+    "Hi! I have Zari Sarees I'd like to sell. Can I send photos?"
+  ),
+  catPureSilk: buildWhatsAppLink(
+    "Hi! I have pure silk sarees I'd like to sell. Can I send photos?"
+  ),
+  catBanarasi: buildWhatsAppLink(
+    "Hi! I have Banarasi silks I'd like to sell — sarees or dupattas. Can I send photos?"
+  ),
+  catHeritageBrocades: buildWhatsAppLink(
+    "Hi! I have heritage brocade pieces — Kinkhab or Meenakari. Can I get a specialist valuation?"
+  ),
+  catZariLehengas: buildWhatsAppLink(
+    "Hi! I have Zari Lehengas or suits I'd like to sell. Can I send photos?"
+  ),
+  catSilkDupattas: buildWhatsAppLink(
+    "Hi! I have silk dupattas or stoles I'd like to sell. Can I send photos?"
+  ),
+  catZariBlouses: buildWhatsAppLink(
+    "Hi! I have Zari blouses or cholis I'd like to sell. Can I send photos?"
+  ),
+  catVintageFabric: buildWhatsAppLink(
+    "Hi! I have vintage Zari fabric or brocade yardage — can I get a valuation?"
+  ),
   valuationGuide: buildWhatsAppLink(
     "Hi! I used your valuation quiz and would like an exact offer."
   ),

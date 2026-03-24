@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { prisma } from '@/lib/prisma'
 import { WA_LINKS } from '@/lib/whatsapp'
+import { CATEGORIES } from '@/lib/categories'
 
 const WA_ICON = (
   <svg className="w-5 h-5 fill-white flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -10,19 +11,12 @@ const WA_ICON = (
   </svg>
 )
 
-const CATEGORIES = [
-  { title: 'Denim & Workwear', img: '1584273143981-41c073dfe8f8', href: '/categories/denim', waKey: 'catDenim' },
-  { title: 'Retro Sports & Streetwear', img: '1515886657613-9f3515b0c78f', href: '/categories/sportswear', waKey: 'catStreetwear' },
-  { title: 'Archive Designer & Luxury', img: '1445205170230-053b83016050', href: '/categories/designer', waKey: 'catDesigner' },
-  { title: 'Jackets & Outerwear', img: '1551488831-00ddcb6c6bd3', href: '/categories/outerwear', waKey: 'catOuterwear' },
-  { title: 'Silk Sarees & Heritage Weaves', img: '1607083206968-13611e3d76db', href: '/categories/heritage-textiles', waKey: 'catHeritage' },
-  { title: 'Bags, Scarves & Accessories', img: '1584916201218-f4242ceb4809', href: '/categories/accessories', waKey: 'catAccessories' },
-] as const
+
 
 export const metadata = {
-  title: 'Zariwala — We Buy Your Vintage Clothing Worldwide',
+  title: 'Zariwala — We Buy Zari & Silk Sarees, Heritage Weaves',
   description:
-    'Zariwala buys quality vintage clothing, silk sarees, and heritage weaves from sellers across India. Fair prices, simple process. Send photos via WhatsApp for a free valuation.',
+    'Zariwala buys Zari Sarees, Pure Silk, Banarasi Silks, Heritage Brocades, Lehengas, Dupattas, Blouses & Vintage Fabric from sellers across India. Fair prices, simple process.',
 }
 
 export default async function HomePage() {
@@ -244,11 +238,11 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {CATEGORIES.map((cat) => (
               <Link
-                key={cat.href}
-                href={`/sell?category=${cat.href.split('/').pop()}`}
+                key={cat.id}
+                href={`/categories/${cat.slug}`}
                 className="group relative block overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
                 style={{
                   border: '1px solid var(--border-on-dark)',
@@ -267,22 +261,23 @@ export default async function HomePage() {
                   }}
                 />
                 {/* Image */}
-                <div className="relative h-44 sm:h-56 overflow-hidden">
+                <div className="relative h-44 sm:h-52 overflow-hidden">
                   <Image
                     src={`https://images.unsplash.com/photo-${cat.img}?auto=format&fit=crop&q=75&w=600`}
                     fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    alt={cat.title}
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    alt={cat.name}
                     className="object-cover transition-all duration-700 group-hover:scale-[1.06]"
                     style={{ filter: 'brightness(0.75) sepia(0.15)' }}
                   />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(14,14,12,0.9) 0%, transparent 55%)' }} />
                 </div>
                 {/* Card text */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5" style={{ zIndex: 2 }}>
-                  <h3 className="font-display text-lg sm:text-xl" style={{ color: 'var(--text-on-dark)' }}>{cat.title}</h3>
-                  <span className="font-ui text-xs mt-1 block" style={{ color: 'var(--gold-bright)', letterSpacing: '0.04em', fontWeight: 600 }}>
-                    Make an Offer →
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4" style={{ zIndex: 2 }}>
+                  <span className="font-ui text-[0.6rem] font-semibold tracking-[0.16em] uppercase block mb-0.5" style={{ color: 'var(--gold-bright)' }}>✦ {cat.eyebrow}</span>
+                  <h3 className="font-display text-base sm:text-lg" style={{ color: 'var(--text-on-dark)' }}>{cat.name}</h3>
+                  <span className="font-ui text-xs mt-0.5 block" style={{ color: 'var(--gold-bright)', letterSpacing: '0.04em', fontWeight: 600 }}>
+                    {cat.cta} →
                   </span>
                 </div>
               </Link>

@@ -19,9 +19,41 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Legacy redirect pre-dating slug system
       {
         source: '/categories/band-tees',
-        destination: '/categories/sportswear',
+        destination: '/categories/zari-sarees',
+        permanent: true,
+      },
+      // ── Old Western category slugs → nearest new zari/silk equivalent ──
+      {
+        source: '/categories/denim',
+        destination: '/what-we-buy',
+        permanent: true,
+      },
+      {
+        source: '/categories/outerwear',
+        destination: '/what-we-buy',
+        permanent: true,
+      },
+      {
+        source: '/categories/sportswear',
+        destination: '/what-we-buy',
+        permanent: true,
+      },
+      {
+        source: '/categories/designer',
+        destination: '/what-we-buy',
+        permanent: true,
+      },
+      {
+        source: '/categories/accessories',
+        destination: '/what-we-buy',
+        permanent: true,
+      },
+      {
+        source: '/categories/heritage-textiles',
+        destination: '/categories/zari-sarees',
         permanent: true,
       },
     ]

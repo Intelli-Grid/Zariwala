@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
+import { ALL_CATEGORY_SLUGS } from '@/lib/categories'
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://zariwala.online'
 
@@ -24,13 +25,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/packing-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    // Category pages
-    { url: `${BASE_URL}/categories/denim`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/categories/accessories`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/categories/outerwear`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/categories/sportswear`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/categories/designer`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/categories/heritage-textiles`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    // Category pages — driven by shared data source
+    ...ALL_CATEGORY_SLUGS.map((slug) => ({
+      url: `${BASE_URL}/categories/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    })),
   ]
 
   const blogRoutes: MetadataRoute.Sitemap = posts.map((post: { slug: string, updatedAt: Date }) => ({
