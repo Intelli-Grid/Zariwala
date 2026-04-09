@@ -106,6 +106,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -113,6 +115,8 @@ body {
   color: var(--body-color);
   font-family: var(--font-body);
   line-height: 1.65;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* ── Typography ─────────────────────────────────────────────── */
@@ -159,6 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Buttons ────────────────────────────────────────────────── */
+@layer components {
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -254,6 +259,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: color 0.15s;
 }
 .link-community:hover { color: var(--body-color); }
+}
 
 /* ── Section Utilities ──────────────────────────────────────── */
 .section-divider {
@@ -346,6 +352,7 @@ h1, h2, h3, h4, h5, h6 {
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* ── v5 Buttons ─────────────────────────────────────────────── */
+@layer components {
 
 /* Navbar "Sell Now" — gold bg, dark text */
 .btn-sell-now {
@@ -415,6 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-secondary-dark:hover {
   border-color: var(--gold-bright);
   color: var(--gold-bright);
+}
 }
 
 /* ═══════════════════════════════════════════════════════════════
