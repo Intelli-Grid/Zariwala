@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Loader2, UploadCloud, Trash2, GripVertical, Star } from 'lucide-react'
 import { CATEGORY_LABELS, CONDITION_STYLES } from '@/lib/utils'
@@ -196,10 +197,9 @@ export function ProductForm({ product }: Props) {
           {images.map((img, idx) => (
             <div key={idx} className="relative group aspect-[3/4] rounded-lg overflow-hidden border-2"
               style={{ borderColor: img.isHero ? 'var(--color-gold-warm)' : 'transparent' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/w_200,c_fill/${img.url}`}
-                alt="" className="w-full h-full object-cover"
+                alt="" fill className="object-cover" sizes="(max-width: 768px) 33vw, 20vw"
               />
               {img.isHero && (
                 <div className="absolute top-1 left-1 bg-[var(--color-gold-warm)] text-white text-[9px] font-inter font-bold px-1 rounded">

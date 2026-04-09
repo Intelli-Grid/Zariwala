@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ArrowLeft, ExternalLink, MessageCircle, Send, Mail,
   ChevronDown, Loader2, CheckCircle2, Clock, Package,
@@ -310,8 +311,7 @@ export default function AdminInquiryDetailPage() {
                     onClick={() => setLightboxSrc(photo)}
                     className="aspect-square rounded-xl overflow-hidden bg-[var(--color-ivory-dark)] hover:opacity-90 transition-opacity cursor-zoom-in"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={photo} alt={`Photo ${i + 1}`} className="w-full h-full object-cover" />
+                    <Image src={photo} alt={`Photo ${i + 1}`} fill className="object-cover" sizes="(max-width: 768px) 33vw, 25vw" />
                   </button>
                 ))}
               </div>
@@ -439,8 +439,7 @@ export default function AdminInquiryDetailPage() {
           onClick={() => setLightboxSrc(null)}
         >
           <div className="relative max-w-4xl w-full max-h-[90vh]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightboxSrc} alt="Photo" className="w-full h-full object-contain rounded-xl" />
+            <Image src={lightboxSrc} alt="Photo" fill unoptimized className="object-contain rounded-xl" />
             <button
               onClick={() => setLightboxSrc(null)}
               className="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-colors"

@@ -1,7 +1,19 @@
-import type { Metadata } from 'next'
+import { Playfair_Display, Lato, Inter, JetBrains_Mono } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
+const lato = Lato({ weight: ['300', '400', '700'], subsets: ['latin'], variable: '--font-body', display: 'swap' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-ui', display: 'swap' })
+const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' })
 import { GoogleAnalytics } from '@next/third-parties/google'
 import AnalyticsTracker from '@/components/shared/AnalyticsTracker'
 import './globals.css'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zariwala.online'),
@@ -68,8 +80,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -89,7 +99,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className="min-h-screen font-body text-[var(--body-color)] bg-[var(--zari-pale)]"
+        className={`min-h-screen font-body text-[var(--body-color)] bg-[var(--zari-pale)] ${playfair.variable} ${lato.variable} ${inter.variable} ${jetbrains.variable}`}
         suppressHydrationWarning
       >
         <AnalyticsTracker />

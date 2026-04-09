@@ -113,16 +113,15 @@ export function Header() {
               Sell Now
             </Link>
 
-            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 rounded-full transition-colors"
-              style={{ background: menuOpen ? 'var(--surface-dark)' : 'transparent' }}
+              className={`lg:hidden p-3 rounded-full transition-colors ${menuOpen ? 'bg-[var(--surface-dark)]' : 'bg-transparent'}`}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
             >
               {menuOpen
-                ? <X size={20} style={{ color: 'var(--text-on-dark)' }} />
-                : <Menu size={20} style={{ color: 'var(--text-on-dark)' }} />}
+                ? <X size={24} style={{ color: 'var(--text-on-dark)' }} />
+                : <Menu size={24} style={{ color: 'var(--text-on-dark)' }} />}
             </button>
           </div>
         </div>
@@ -143,7 +142,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-2.5 px-3 rounded-lg font-ui text-sm font-medium transition-colors"
+                className="py-3 px-4 rounded-lg font-ui text-base font-medium transition-colors"
                 style={{ color: 'var(--text-on-dark-sub)' }}
                 onMouseEnter={e => {
                   e.currentTarget.style.color = 'var(--text-on-dark)'

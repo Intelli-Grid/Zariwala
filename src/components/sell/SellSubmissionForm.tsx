@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -422,8 +423,7 @@ export function SellSubmissionForm() {
           <div className="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-3">
             {photos.map((photo, i) => (
               <div key={i} className="relative aspect-square rounded-lg overflow-hidden group">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={photo.url} alt={photo.name} className="w-full h-full object-cover" />
+                <Image src={photo.url} alt={photo.name} fill className="object-cover" sizes="(max-width: 768px) 33vw, 20vw" />
                 <button
                   type="button"
                   onClick={() => setPhotos((p) => p.filter((_, idx) => idx !== i))}
