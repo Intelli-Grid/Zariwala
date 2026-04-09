@@ -23,11 +23,13 @@ export function AnnouncementBar() {
   return (
     <div
       id="announcement-bar"
-      className="text-center px-4 py-2.5 text-xs font-ui font-semibold"
+      className="text-center px-3 sm:px-4 py-2 sm:py-2.5 text-[10px] sm:text-xs font-ui font-semibold overflow-hidden"
       style={{ background: 'var(--gold-core)', color: 'var(--surface-void)', letterSpacing: '0.06em' }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-center">
-        <span key={messageIdx}>{MESSAGES[messageIdx]}</span>
+        <span key={messageIdx} className="whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal sm:overflow-visible text-center max-w-full">
+          {MESSAGES[messageIdx]}
+        </span>
       </div>
     </div>
   )

@@ -57,7 +57,7 @@ export default async function HomePage() {
     <>
       {/* ─── HERO — DARK ─── */}
       <section
-        className="relative overflow-hidden min-h-[90vh] flex items-center textured-section dark-section"
+        className="w-full max-w-[100vw] relative overflow-hidden min-h-[100svh] flex items-center textured-section dark-section"
         style={{ background: 'var(--surface-void)' }}
       >
         {/* Background photo */}

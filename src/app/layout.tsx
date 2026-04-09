@@ -99,7 +99,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`min-h-screen font-body text-[var(--body-color)] bg-[var(--zari-pale)] ${playfair.variable} ${lato.variable} ${inter.variable} ${jetbrains.variable}`}
+        className={`min-h-[100svh] w-full max-w-[100vw] overflow-x-hidden font-body text-[var(--body-color)] bg-[var(--zari-pale)] ${playfair.variable} ${lato.variable} ${inter.variable} ${jetbrains.variable}`}
         suppressHydrationWarning
       >
         <AnalyticsTracker />

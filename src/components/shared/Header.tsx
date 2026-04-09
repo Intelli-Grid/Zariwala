@@ -36,11 +36,11 @@ export function Header() {
         borderBottom: '1px solid var(--border-on-dark)',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-1 sm:gap-4 h-16 md:h-20 flex-nowrap">
 
           {/* Logo — emblem + wordmark */}
-          <Link href="/" className="flex items-center gap-2.5 group" id="header-logo">
+          <Link href="/" className="flex items-center gap-1.5 sm:gap-2.5 group flex-shrink-0" id="header-logo">
             <Image
               src="/zariwala-logo.png"
               alt="Zariwala logo"
@@ -87,13 +87,13 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0 flex-nowrap">
             {/* Primary WhatsApp CTA */}
             <a
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '1XXXXXXXXXX'}?text=${encodeURIComponent("Hi Zariwala! I have some vintage clothing I'd like to sell.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex btn-whatsapp text-sm px-5 py-2.5"
+              className="inline-flex btn-whatsapp text-[11px] sm:text-sm px-3 py-1.5 sm:px-5 sm:py-2.5 whitespace-nowrap"
               id="header-whatsapp-cta"
             >
               {/* WhatsApp icon */}
