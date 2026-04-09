@@ -40,24 +40,24 @@ export function Header() {
         <div className="flex items-center justify-between gap-1 sm:gap-4 h-16 md:h-20 flex-nowrap">
 
           {/* Logo — emblem + wordmark */}
-          <Link href="/" className="flex items-center gap-1.5 sm:gap-2.5 group flex-shrink-0" id="header-logo">
+          <Link href="/" className="flex items-center gap-1.5 sm:gap-2.5 group flex-shrink-0 min-w-0" id="header-logo">
             <Image
               src="/zariwala-logo.png"
               alt="Zariwala logo"
-              width={40}
-              height={40}
+              width={36}
+              height={36}
               className="rounded-sm object-contain flex-shrink-0"
               priority
             />
-            <span className="flex flex-col leading-none">
+            <span className="flex flex-col leading-none min-w-0">
               <span
-                className="font-display text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[var(--gold-bright)]"
+                className="font-display text-[1.35rem] sm:text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-200 group-hover:text-[var(--gold-bright)] truncate"
                 style={{ color: 'var(--text-on-dark)', letterSpacing: '-0.02em' }}
               >
                 Zariwala
               </span>
               <span
-                className="font-ui text-[10px] tracking-[0.22em] uppercase transition-colors duration-200"
+                className="hidden sm:inline-block font-ui text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 truncate"
                 style={{ color: 'var(--gold-core)', marginTop: '-1px' }}
               >
                 Vintage Clothing Buyers
@@ -93,15 +93,16 @@ export function Header() {
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '1XXXXXXXXXX'}?text=${encodeURIComponent("Hi Zariwala! I have some vintage clothing I'd like to sell.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex btn-whatsapp text-[11px] sm:text-sm px-3 py-1.5 sm:px-5 sm:py-2.5 whitespace-nowrap"
+              className="inline-flex btn-whatsapp text-[11px] sm:text-sm px-2.5 py-1.5 sm:px-5 sm:py-2.5 whitespace-nowrap"
               id="header-whatsapp-cta"
             >
               {/* WhatsApp icon */}
-              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white flex-shrink-0">
+              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white flex-shrink-0">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
                 <path d="M11.974 0C5.364 0 0 5.363 0 11.973c0 2.105.553 4.076 1.514 5.782L.057 23.143l5.557-1.457a11.94 11.94 0 005.36 1.277h.005C17.584 22.963 24 17.6 24 10.989 24 5.38 18.584 0 11.974 0z" />
               </svg>
-              Get a Quote
+              <span className="hidden sm:inline">Get a Quote</span>
+              <span className="sm:hidden">Quote</span>
             </a>
 
             {/* Sell CTA — gold btn-sell-now */}
