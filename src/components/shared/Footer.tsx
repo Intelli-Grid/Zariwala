@@ -13,11 +13,13 @@ const SELL_LINKS = [
   { href: '/valuation-guide', label: 'Valuation Guide' },
   { href: '/packing-guide', label: 'Packing Guide' },
   { href: '/shipping-info', label: 'Shipping Info' },
+  { href: '/track', label: 'Track Your Inquiry' },
 ]
 
 const LEARN_LINKS = [
   { href: '/faq', label: 'FAQ' },
   { href: '/valuation-guide', label: 'Price Guide' },
+  { href: '/blog', label: 'Blog' },
 ]
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '1XXXXXXXXXX'

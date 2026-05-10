@@ -27,27 +27,34 @@ export default function SellPage() {
         </Suspense>
 
         {/* Trust Signals */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center animate-fade-in-up" style={{ color: 'var(--muted)' }}>
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center" style={{ color: 'var(--muted)' }}>
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🤝</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>No Obligation</h3>
+            <p className="font-body text-xs">Valuations are 100% free. Decline anytime.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>⚡</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Fast Responses</h3>
+            <p className="font-body text-xs">Offer within 24 hours, same-day payment on receipt.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
+              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🌍</span>
+            </div>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>India & Global</h3>
+            <p className="font-body text-xs">We collect from Delhi, Mumbai, Varanasi and internationally.</p>
+          </div>
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
               <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🛡️</span>
             </div>
-            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>No Obligation</h3>
-            <p className="font-body text-xs">You are completely free to decline our offer. Valuations are 100% free.</p>
-          </div>
-          <div className="flex flex-col items-center">
-             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
-              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>⚡</span>
-            </div>
-            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Fast Responses</h3>
-            <p className="font-body text-xs">Quick evaluations and same-day deposits upon securing agreed items.</p>
-          </div>
-          <div className="flex flex-col items-center">
-             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-white shadow-sm border" style={{ borderColor: 'var(--zari-gold-light)' }}>
-              <span className="text-xl" style={{ color: 'var(--zari-gold)' }}>🌍</span>
-            </div>
-            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Global Purchasing</h3>
-            <p className="font-body text-xs">We provide pre-paid FedEx labels to sellers worldwide seamlessly.</p>
+            <h3 className="font-ui text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>Protected Shipping</h3>
+            <p className="font-body text-xs">We guide you on insured courier options before you ship anything.</p>
           </div>
         </div>
       </div>

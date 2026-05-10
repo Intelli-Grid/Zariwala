@@ -2,6 +2,8 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
+import { headers } from 'next/headers'
+import { getLoginRatelimit } from '@/lib/ratelimit'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -14,6 +16,20 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           return null
+        }
+
+        // Rate limit by IP — 5 failed attempts per 15 minutes
+        try {
+          const headersList = await headers()
+          const ip =
+            headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+            headersList.get('x-real-ip') ??
+            'unknown'
+          const limiter = getLoginRatelimit()
+          const { success } = await limiter.limit(ip)
+          if (!success) return null // silently reject — no error message to enumerate
+        } catch {
+          // Redis unavailable — fail open so admins aren't locked out
         }
 
         const admin = await prisma.adminUser.findUnique({

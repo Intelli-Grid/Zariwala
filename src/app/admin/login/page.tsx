@@ -35,7 +35,7 @@ export default function AdminLogin() {
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl border border-[var(--color-gold)]/20">
         <div>
           <h2 className="mt-6 text-center font-display text-4xl text-[var(--color-espresso)]">
-            Vintage Admin
+            Zariwala Admin
           </h2>
           <p className="mt-2 text-center font-body text-sm text-[var(--color-gray-500)]">
             Secure login for platform administrators

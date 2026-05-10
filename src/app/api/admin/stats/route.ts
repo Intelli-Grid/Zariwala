@@ -12,6 +12,9 @@ export async function GET(req: NextRequest) {
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
 
+    // Safe wrapper — a single DB failure won't blank the entire dashboard
+    const safeCount = (p: Promise<number>) => p.catch(() => 0)
+
     const [
       totalInquiries,
       newInquiries,
@@ -25,16 +28,16 @@ export async function GET(req: NextRequest) {
       publishedBlogPosts,
       recentInquiries,
     ] = await Promise.all([
-      prisma.inquiry.count(),
-      prisma.inquiry.count({ where: { status: 'NEW' } }),
-      prisma.inquiry.count({ where: { status: 'IN_REVIEW' } }),
-      prisma.inquiry.count({ where: { status: 'OFFER_SENT' } }),
-      prisma.inquiry.count({ where: { status: 'ACCEPTED' } }),
-      prisma.inquiry.count({ where: { status: 'COMPLETED' } }),
-      prisma.inquiry.count({ where: { createdAt: { gte: thirtyDaysAgo } } }),
-      prisma.inquiry.count({ where: { createdAt: { gte: sevenDaysAgo } } }),
-      prisma.blogPost.count(),
-      prisma.blogPost.count({ where: { published: true } }),
+      safeCount(prisma.inquiry.count()),
+      safeCount(prisma.inquiry.count({ where: { status: 'NEW' } })),
+      safeCount(prisma.inquiry.count({ where: { status: 'REVIEWING' } })), // Fixed: was 'IN_REVIEW'
+      safeCount(prisma.inquiry.count({ where: { status: 'OFFER_SENT' } })),
+      safeCount(prisma.inquiry.count({ where: { status: 'ACCEPTED' } })),
+      safeCount(prisma.inquiry.count({ where: { status: 'COMPLETED' } })),
+      safeCount(prisma.inquiry.count({ where: { createdAt: { gte: thirtyDaysAgo } } })),
+      safeCount(prisma.inquiry.count({ where: { createdAt: { gte: sevenDaysAgo } } })),
+      safeCount(prisma.blogPost.count()),
+      safeCount(prisma.blogPost.count({ where: { published: true } })),
       prisma.inquiry.findMany({
         orderBy: { createdAt: 'desc' },
         take: 5,
@@ -47,7 +50,7 @@ export async function GET(req: NextRequest) {
           status: true,
           createdAt: true,
         },
-      }),
+      }).catch(() => []),
     ])
 
     return NextResponse.json({

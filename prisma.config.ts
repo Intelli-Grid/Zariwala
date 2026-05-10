@@ -10,6 +10,8 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    // Migrations must bypass pgBouncer — use direct (non-pooler) URL.
+    // The app's PrismaClient uses DATABASE_URL (pooler) at runtime via src/lib/prisma.ts.
+    url: process.env["DIRECT_URL"] ?? process.env["DATABASE_URL"],
   },
 });

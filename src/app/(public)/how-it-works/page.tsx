@@ -109,6 +109,19 @@ export default function HowItWorksPage() {
                   </Link>
                 </div>
               )}
+
+              {/* Shipping insurance callout — Step 2 only */}
+              {step.n === '2' && (
+                <div
+                  className="mt-5 p-4 rounded-lg border-l-4 font-body text-sm leading-relaxed"
+                  style={{ borderColor: 'var(--zari-gold)', background: 'var(--zari-warm)', color: 'var(--body-color)' }}
+                >
+                  <strong>🛡️ Your item is protected in transit.</strong> We recommend insured
+                  shipping via India Post Speed Post or a reputable private courier with a
+                  declared value. Before you ship anything, our team will guide you on the
+                  safest and most cost-effective option for your specific item.
+                </div>
+              )}
             </div>
           ))}
         </div>

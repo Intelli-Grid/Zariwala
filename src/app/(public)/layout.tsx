@@ -3,6 +3,7 @@ import { Footer } from '@/components/shared/Footer'
 import { FloatingContactButtons } from '@/components/shared/FloatingContactButtons'
 import { MobileStickyBar } from '@/components/shared/MobileStickyBar'
 import { AnnouncementBar } from '@/components/shared/AnnouncementBar'
+import { RecentPurchasesTicker } from '@/components/shared/RecentPurchasesTicker'
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,6 +15,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <Footer />
       <FloatingContactButtons />
       <MobileStickyBar />
+      <RecentPurchasesTicker />
     </>
   )
 }
+

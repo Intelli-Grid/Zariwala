@@ -35,3 +35,20 @@ export function getBlogRatelimit(): Ratelimit {
 
   return _blogLimiter
 }
+
+// Admin login: max 5 attempts per IP per 15 minutes — brute-force protection
+let _loginLimiter: Ratelimit | null = null
+
+export function getLoginRatelimit(): Ratelimit {
+  if (_loginLimiter) return _loginLimiter
+
+  _loginLimiter = new Ratelimit({
+    redis: getRedis(),
+    limiter: Ratelimit.slidingWindow(5, '15 m'),
+    analytics: true,
+    prefix: 'zariwala:login',
+  })
+
+  return _loginLimiter
+}
+

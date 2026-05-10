@@ -25,14 +25,16 @@ export const metadata: Metadata = {
     'Zariwala buys quality vintage clothing from sellers in the US, UK, and Asia. ' +
     'Fair prices, simple process. Send photos via WhatsApp for a free valuation.',
   keywords: [
-    'sell vintage clothing',
-    'vintage clothing buyer',
-    'sell vintage levis',
+    'sell banarasi silk sarees',
+    'sell vintage zari sarees',
+    'heritage textile buyer india',
+    'sell kanjivaram saree',
+    'zari fabric buyer',
+    'sell antique brocade india',
     'zariwala',
-    'vintage clothing buyer uk',
-    'vintage clothing buyer usa',
-    'sell vintage denim online',
-    'heritage textiles buyer',
+    'vintage silk saree buyer',
+    'sell zari lehenga',
+    'heritage weave buyer',
   ],
   openGraph: {
     type: 'website',
@@ -55,7 +57,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Zariwala',
   description:
-    'Zariwala buys quality vintage clothing globally — US, UK, and Asia. Fair prices, WhatsApp-first process.',
+    'Zariwala buys heritage silk sarees, Banarasi brocades, vintage zari fabric and textiles globally — India, US, UK, and Asia. Fair prices, WhatsApp-first process.',
   url: 'https://zariwala.online',
   logo: 'https://zariwala.online/og-image.jpg',
   contactPoint: [
@@ -66,7 +68,7 @@ const localBusinessSchema = {
     },
   ],
   sameAs: ['https://www.instagram.com/zariwala'],
-  areaServed: ['US', 'GB', 'JP', 'IN', 'AU', 'CA'],
+  areaServed: ['IN', 'US', 'GB', 'JP', 'AU', 'CA'],
 }
 
 export default function RootLayout({

@@ -4,15 +4,13 @@ import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { sendGAEvent } from '@next/third-parties/google'
 import { buildOfferLink, OfferFormData } from '@/lib/whatsapp'
+import { CATEGORIES as SITE_CATEGORIES } from '@/lib/categories'
 
-const CATEGORIES = [
-  { value: 'Denim & Workwear', slug: 'denim' },
-  { value: 'Retro Sports & Streetwear', slug: 'sportswear' },
-  { value: 'Archive Designer & Luxury', slug: 'designer' },
-  { value: 'Silk Sarees & Heritage Weaves', slug: 'heritage-textiles' },
-  { value: 'Jackets & Outerwear', slug: 'outerwear' },
-  { value: 'Bags, Scarves & Accessories', slug: 'accessories' },
-]
+// Synced from categories.ts — single source of truth
+const CATEGORIES = SITE_CATEGORIES.map(c => ({
+  value: c.name,
+  slug: c.slug,
+}))
 
 const ERAS = ['1940s or earlier', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', 'Not sure']
 
@@ -76,18 +74,46 @@ export function WhatsAppOfferForm() {
 
   const handleWhatsAppRedirect = () => {
     sendGAEvent({ event: 'offer_whatsapp_clicked' })
-    const link = buildOfferLink(formData)
-    window.open(link, '_blank', 'noopener,noreferrer')
+
+    // Fire-and-forget — saves inquiry to DB without blocking the WhatsApp redirect
+    fetch('/api/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sellerName: formData.name,
+        contactMethod: 'WHATSAPP',
+        country: formData.location || 'India',
+        category: formData.category,
+        condition: formData.condition,
+        itemCount: formData.itemCount,
+        description: [
+          'Era: ' + formData.era,
+          'Item: ' + formData.itemType,
+          'Flaws: ' + (formData.flaws?.trim() || 'None'),
+        ].join(' · '),
+        photos: [],
+      }),
+    }).catch(console.error)
+
+    window.open(buildOfferLink(formData), '_blank', 'noopener,noreferrer')
   }
 
-  // Helper context mapping
-  const helperText = CATEGORIES.find(c => c.value === formData.category)?.slug === 'heritage-textiles' 
-    ? "We buy Banarasi, Kanjivaram, Patola, and other heritage weaves. Offers made in ₹ for India sellers."
-    : CATEGORIES.find(c => c.value === formData.category)?.slug === 'denim'
-    ? "We specialise in vintage Levi's, Lee, Wrangler, and workwear from the 1960s–1990s."
-    : CATEGORIES.find(c => c.value === formData.category)?.slug === 'designer'
-    ? "We assess pre-2000 pieces from Issey Miyake, Helmut Lang, Versace, and more."
-    : "Fill out the details below to receive a fast, free valuation directly on WhatsApp."
+  // Helper context mapping — keyed by Zari/Silk category slugs
+  const selectedSlug = CATEGORIES.find(c => c.value === formData.category)?.slug
+  const helperText =
+    selectedSlug === 'zari-sarees'
+      ? 'We buy all Banarasi, Kanjivaram, and zari-worked sarees — any era, any condition. Offers in ₹.'
+      : selectedSlug === 'banarasi-silks'
+      ? 'Varanasi\'s finest — we pay premium for dense zari motifs and pre-1990 pieces.'
+      : selectedSlug === 'heritage-brocades'
+      ? 'Kinkhab, Meenakari, and antique brocade. These are specialist valuations — we\'ll guide you.'
+      : selectedSlug === 'pure-silk-sarees'
+      ? 'Kanjivaram, Mysore, Dharmavaram, Tussar — all authenticated pure silk is welcome.'
+      : selectedSlug === 'zari-lehengas-suits'
+      ? 'Bridal and festive zari garments — silk lehenga sets, Anarkalis, Shararas with gold thread work.'
+      : selectedSlug === 'vintage-zari-fabric'
+      ? 'Rolled kinkhab, brocade yardage, and pre-cut zari panels — often more valuable than finished pieces.'
+      : 'Fill out the details below to receive a fast, free valuation directly on WhatsApp.'
 
   return (
     <div className="bg-white rounded-2xl shadow-xl border p-6 md:p-10 border-[rgba(184,134,11,0.15)]">
