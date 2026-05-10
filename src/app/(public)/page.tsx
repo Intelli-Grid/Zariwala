@@ -234,7 +234,7 @@ export default async function HomePage() {
             <div className="section-divider-gold mx-auto mb-6 w-16" />
             <h2 className="font-display text-4xl md:text-5xl">What We Buy</h2>
             <p className="font-body text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
-              Authentic vintage clothing from the 1940s through the late 1990s. From Levi's denim to archive designer labels.
+              Banarasi silks, heritage zari sarees, vintage brocades, and occasion-wear from across India. We buy single pieces and full collections.
             </p>
           </div>
 
@@ -307,8 +307,8 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
             {[
-              { item: "Levi's 501 Jeans (1970s–80s)", fair: '₹1,500–3,500', good: '₹3,500–8,500', excellent: '₹8,500–35,000+' },
-              { item: 'Vintage Band Tee (1970–90)', fair: '₹2,500–5,000', good: '₹5,000–12,500', excellent: '₹12,500–50,000+' },
+              { item: 'Banarasi Bridal Lehenga (Zari)', fair: '₹4,000–12,000', good: '₹12,000–45,000', excellent: '₹45,000–2,00,000+' },
+              { item: 'Antique Kanjivaram Saree', fair: '₹3,000–8,000', good: '₹8,000–30,000', excellent: '₹30,000–1,50,000+' },
               { item: 'Heritage Silk Saree / Zari', fair: '₹2,500–6,500', good: '₹6,500–25,000', excellent: '₹25,000–1,50,000+' },
             ].map(row => (
               <div
